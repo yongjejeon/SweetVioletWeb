@@ -1,21 +1,27 @@
 // src/pages/Preferences.js
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AppContext from '../AppContext';
 import Selector from '../components/Selector';
 import Input from '../components/Input';
 import Button from '../components/Button';
 
 const Preferences = () => {
-  const [selectedMeals, setSelectedMeals] = useState([]);
-  const [selectedGoal, setSelectedGoal] = useState(null);
-  const [weight, setWeight] = useState('');
-  const [height, setHeight] = useState('');
+  const {
+    selectedMeals,
+    setSelectedMeals,
+    selectedGoal,
+    setSelectedGoal,
+    weight,
+    setWeight,
+    height,
+    setHeight,
+  } = useContext(AppContext);
 
   const navigate = useNavigate();
 
   const handleGenerateMealPlan = () => {
-    // Perform any form validation or data processing here
-    navigate('/meal-plan'); // Navigate to the Meal Plan page
+    navigate('/meal-plan');
   };
 
   return (
@@ -25,7 +31,7 @@ const Preferences = () => {
       <Selector options={['Maintain', 'Bulk', 'Cut']} onSelect={setSelectedGoal} multiple={false} />
       <Input label="Weight" value={weight} onChange={setWeight} placeholder="Enter your weight" />
       <Input label="Height" value={height} onChange={setHeight} placeholder="Enter your height" />
-      <Button label="Generate Meal Plan" onClick={handleGenerateMealPlan} />
+      <Button label="Generate Meal Plan" onClick={handleGenerateMealPlan} disabled={!selectedGoal || selectedMeals.length === 0} /> {/*Added a disabled component(the user must select goal and atleast one meal) */}
     </div>
   );
 };

@@ -1,9 +1,22 @@
 // src/pages/MealPlan.js
-import React from 'react';
 import Button from '../components/Button';
+import AppContext from '../AppContext'; //this js file stores the inputs from Preferences.js
+import React, { useContext } from 'react';
 
-const MealPlan = () => {
+const MealPlan = () => { //add this to access inputs
+  const {
+    selectedMeals,
+    setSelectedMeals,
+    selectedGoal,
+    setSelectedGoal,
+    weight,
+    setWeight,
+    height,
+    setHeight,
+  } = useContext(AppContext);
+
   return (
+    
     <div style={{ padding: '20px' }}>
       <h2>Generated Meal Plan for the Week</h2>
       <div>
@@ -36,6 +49,13 @@ const MealPlan = () => {
         <Button label="Select Meal Plan without Ordering" onClick={() => console.log('Select without ordering')} />
         <Button label="Order Meal Plan" onClick={() => console.log('Order meal plan')} />
         <Button label="Regenerate" onClick={() => console.log('Regenerate meal plan')} />
+      </div>
+      {/*This is how you can access weight*/}
+      <div>
+        const { weight } = useContext(AppContext); 
+      </div>
+      <div style={{ padding: '20px' }}>
+          <p>Current weight (from context): {weight} kg</p>
       </div>
     </div>
   );
