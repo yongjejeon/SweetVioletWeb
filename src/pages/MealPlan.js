@@ -1,3 +1,4 @@
+// src/pages/MealPlan.js
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppContext from '../AppContext'; // This js file stores the inputs from Preferences.js
@@ -15,14 +16,7 @@ const MealPlan = () => {
     height,
   } = useContext(AppContext);
 
-
   const navigate = useNavigate();
-
-  // Placeholder nutrition data
-  const calories = 2000;
-  const carbs = '250g';
-  const protein = '100g';
-  const fat = '70g';
 
   // Function to calculate total price for each day
   const calculateTotalPrice = (meals) => {
@@ -66,7 +60,6 @@ const MealPlan = () => {
     { calories: 0, carbs: 0, protein: 0, fat: 0 }
   );
 
-
   // Handler for navigating to the meal plan detail page for a specific day
   const handleDayClick = (day) => {
     navigate(`/meal-plan/${day}`);
@@ -79,32 +72,19 @@ const MealPlan = () => {
       </div>
 
       {/* Scrollable Meal Plan Section */}
-
       <div style={{ display: 'flex', overflowX: 'scroll', marginBottom: '20px', padding: '10px', border: '1px solid #ccc' }}>
-        {[...Array(7).keys()].map((day) => (
-          <div key={day} onClick={() => handleDayClick(day + 1)} style={{ cursor: 'pointer' }}>
-            <DayCard day={day + 1} />
-          </div>
-        ))}
-
-      <div className="meal-plan-container">
         {mockMealData.map((dayData, dayIndex) => {
           const totalPrice = calculateTotalPrice(dayData.meals);
 
           return (
-            <DayCard
-              key={dayIndex}
-              day={dayData.day}
-              meals={dayData.meals}
-              totalPrice={totalPrice}
-            />
+            <div key={dayIndex} onClick={() => handleDayClick(dayData.day)} style={{ cursor: 'pointer' }}>
+              <DayCard day={dayData.day} meals={dayData.meals} totalPrice={totalPrice} />
+            </div>
           );
         })}
-
       </div>
-
       {/* Nutrition Overview Section */}
-      <div class = "meal-plan-container">
+      <div className="meal-plan-container">
         <NutritionOverview
           calories={totalWeeklyNutrition.calories.toFixed(0)} // Ensure valid number, toFixed on valid numbers only
           carbs={`${totalWeeklyNutrition.carbs}g`} // Make sure carbs are passed as string with 'g'
@@ -112,8 +92,6 @@ const MealPlan = () => {
           fat={`${totalWeeklyNutrition.fat}g`} // Same for fat
         />
       </div>
-      
-
       {/* Action Buttons */}
       <ActionButtons />
     </div>
@@ -121,3 +99,4 @@ const MealPlan = () => {
 };
 
 export default MealPlan;
+
