@@ -1,38 +1,24 @@
 /* MealPlan.css */
 .meal-plan-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    background-color: #F8F8F8;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.header {
-    font-size: 1.8em;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.date-range {
-    text-align: center;
-    color: #666;
-    font-size: 1em;
-    margin-bottom: 30px;
-}
-
-.meal-cards {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    gap: 10px;
-}
-
-.button-group {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
+    overflow-x: auto; /* This enables horizontal scrolling */
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .day-card {
+    width: 300px; /* Set the width of each card */
+    margin-right: 20px; /* Optional space between cards */
+    flex-shrink: 0; /* Prevent cards from shrinking */
+  }
+  
+  h2 {
+    margin-left: 130px;
+  }
+  
+  /* Optional: styling for the individual day cards */
+  .day-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
