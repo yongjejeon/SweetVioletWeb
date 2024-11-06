@@ -1,12 +1,18 @@
 // src/components/Header.js
 import React from 'react';
+import './Header.css';
+import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ title, navItems }) => {
   return (
-    <header style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>
-      <h1>Sweet Violet</h1>
+    <header>
+      <h1>{title}</h1>
       <nav>
-        <a href="#meal-plan">Meal Plan</a> | <a href="#preferences">Preferences</a>
+        {navItems.map((item, index) => (
+          <Link key={index} to={item.href}>
+            {item.label}
+          </Link>
+        ))}
       </nav>
     </header>
   );
