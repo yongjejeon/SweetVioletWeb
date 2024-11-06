@@ -9,7 +9,16 @@ import { mockMealData } from '../mockMealData'; // Import mock data
 import './MealPlan.css';
 
 const MealPlan = () => {
+
   const { selectedMeals, selectedGoal, weight, height } = useContext(AppContext);
+
+  const {
+    selectedMeals,
+    selectedGoal,
+    weight,
+    height,
+  } = useContext(AppContext);
+
 
   const navigate = useNavigate();
 
@@ -55,9 +64,15 @@ const MealPlan = () => {
     { calories: 0, carbs: 0, protein: 0, fat: 0 }
   );
 
+
   // Handler for navigating to the meal plan detail page for a specific day using dayIndex
   const handleDayClick = (dayIndex) => {
     navigate(`/meal-plan/${dayIndex}`);
+
+  // Handler for navigating to the meal plan detail page for a specific day
+  const handleDayClick = (day) => {
+    navigate(`/meal-plan/${day}`);
+
   };
 
   return (
@@ -68,17 +83,24 @@ const MealPlan = () => {
 
       {/* Scrollable Meal Plan Section */}
       <div style={{ display: 'flex', overflowX: 'scroll', marginBottom: '20px', padding: '10px', border: '1px solid #ccc' }}>
+
         {mockMealData.map((dayData) => {
           const totalPrice = calculateTotalPrice(dayData.meals);
 
           return (
             <div key={dayData.dayIndex} onClick={() => handleDayClick(dayData.dayIndex)} style={{ cursor: 'pointer' }}>
+
+        {mockMealData.map((dayData, dayIndex) => {
+          const totalPrice = calculateTotalPrice(dayData.meals);
+
+          return (
+            <div key={dayIndex} onClick={() => handleDayClick(dayData.day)} style={{ cursor: 'pointer' }}>
+
               <DayCard day={dayData.day} meals={dayData.meals} totalPrice={totalPrice} />
             </div>
           );
         })}
       </div>
-
       {/* Nutrition Overview Section */}
       <div className="meal-plan-container">
         <NutritionOverview
@@ -96,3 +118,4 @@ const MealPlan = () => {
 };
 
 export default MealPlan;
+
