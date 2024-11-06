@@ -1,4 +1,3 @@
-// src/data/mockMealData.js
 export const mockMealData = [
   {
     day: 'Day 1',
@@ -9,7 +8,11 @@ export const mockMealData = [
         carbs: 40,
         protein: 10,
         fat: 5,
-        ingredients: ['Oats', 'Milk', 'Banana']
+        ingredients: [
+          { name: 'Oats', price: 0.5 },
+          { name: 'Milk', price: 0.3 },
+          { name: 'Banana', price: 0.2 }
+        ]
       },
       lunch: {
         name: 'Grilled Chicken Salad',
@@ -17,7 +20,11 @@ export const mockMealData = [
         carbs: 30,
         protein: 40,
         fat: 15,
-        ingredients: ['Chicken', 'Lettuce', 'Tomato']
+        ingredients: [
+          { name: 'Chicken', price: 2.5 },
+          { name: 'Lettuce', price: 0.7 },
+          { name: 'Tomato', price: 0.8 }
+        ]
       },
       dinner: {
         name: 'Salmon and Quinoa',
@@ -25,7 +32,11 @@ export const mockMealData = [
         carbs: 45,
         protein: 35,
         fat: 20,
-        ingredients: ['Salmon', 'Quinoa', 'Broccoli']
+        ingredients: [
+          { name: 'Salmon', price: 4.0 },
+          { name: 'Quinoa', price: 1.5 },
+          { name: 'Broccoli', price: 1.0 }
+        ]
       }
     }
   },
@@ -38,7 +49,11 @@ export const mockMealData = [
         carbs: 50,
         protein: 15,
         fat: 8,
-        ingredients: ['Greek Yogurt', 'Granola', 'Honey']
+        ingredients: [
+          { name: 'Greek Yogurt', price: 1.0 },
+          { name: 'Granola', price: 0.8 },
+          { name: 'Honey', price: 0.4 }
+        ]
       },
       lunch: {
         name: 'Turkey Sandwich',
@@ -46,7 +61,11 @@ export const mockMealData = [
         carbs: 40,
         protein: 30,
         fat: 10,
-        ingredients: ['Turkey', 'Whole Wheat Bread', 'Lettuce']
+        ingredients: [
+          { name: 'Turkey', price: 1.5 },
+          { name: 'Whole Wheat Bread', price: 0.6 },
+          { name: 'Lettuce', price: 0.3 }
+        ]
       },
       dinner: {
         name: 'Chicken Stir Fry',
@@ -54,7 +73,12 @@ export const mockMealData = [
         carbs: 60,
         protein: 40,
         fat: 15,
-        ingredients: ['Chicken', 'Vegetables', 'Soy Sauce', 'Rice']
+        ingredients: [
+          { name: 'Chicken', price: 2.5 },
+          { name: 'Vegetables', price: 1.0 },
+          { name: 'Soy Sauce', price: 0.2 },
+          { name: 'Rice', price: 0.3 }
+        ]
       }
     }
   },
@@ -67,7 +91,12 @@ export const mockMealData = [
         carbs: 50,
         protein: 12,
         fat: 5,
-        ingredients: ['Banana', 'Berries', 'Almond Milk', 'Chia Seeds']
+        ingredients: [
+          { name: 'Banana', price: 0.2 },
+          { name: 'Berries', price: 1.0 },
+          { name: 'Almond Milk', price: 0.7 },
+          { name: 'Chia Seeds', price: 0.5 }
+        ]
       },
       lunch: {
         name: 'Quinoa Salad',
@@ -75,7 +104,12 @@ export const mockMealData = [
         carbs: 55,
         protein: 15,
         fat: 12,
-        ingredients: ['Quinoa', 'Cucumber', 'Feta Cheese', 'Olives']
+        ingredients: [
+          { name: 'Quinoa', price: 1.5 },
+          { name: 'Cucumber', price: 0.5 },
+          { name: 'Feta Cheese', price: 1.0 },
+          { name: 'Olives', price: 0.8 }
+        ]
       },
       dinner: {
         name: 'Grilled Steak and Asparagus',
@@ -83,7 +117,11 @@ export const mockMealData = [
         carbs: 20,
         protein: 50,
         fat: 30,
-        ingredients: ['Steak', 'Asparagus', 'Olive Oil']
+        ingredients: [
+          { name: 'Steak', price: 5.0 },
+          { name: 'Asparagus', price: 1.5 },
+          { name: 'Olive Oil', price: 0.4 }
+        ]
       }
     }
   },
@@ -96,7 +134,11 @@ export const mockMealData = [
         carbs: 30,
         protein: 20,
         fat: 25,
-        ingredients: ['Egg', 'Avocado', 'Whole Wheat Bread']
+        ingredients: [
+          { name: 'Egg', price: 0.3 },
+          { name: 'Avocado', price: 1.5 },
+          { name: 'Whole Wheat Bread', price: 0.6 }
+        ]
       },
       lunch: {
         name: 'Chicken Caesar Salad',
@@ -104,7 +146,12 @@ export const mockMealData = [
         carbs: 20,
         protein: 45,
         fat: 25,
-        ingredients: ['Chicken', 'Romaine Lettuce', 'Caesar Dressing', 'Croutons']
+        ingredients: [
+          { name: 'Chicken', price: 2.5 },
+          { name: 'Romaine Lettuce', price: 0.6 },
+          { name: 'Caesar Dressing', price: 0.7 },
+          { name: 'Croutons', price: 0.3 }
+        ]
       },
       dinner: {
         name: 'Shrimp and Veggie Stir Fry',
@@ -112,7 +159,12 @@ export const mockMealData = [
         carbs: 40,
         protein: 35,
         fat: 18,
-        ingredients: ['Shrimp', 'Bell Peppers', 'Zucchini', 'Soy Sauce']
+        ingredients: [
+          { name: 'Shrimp', price: 3.0 },
+          { name: 'Bell Peppers', price: 1.0 },
+          { name: 'Zucchini', price: 0.8 },
+          { name: 'Soy Sauce', price: 0.2 }
+        ]
       }
     }
   },
@@ -125,7 +177,11 @@ export const mockMealData = [
         carbs: 60,
         protein: 8,
         fat: 7,
-        ingredients: ['Whole Grain Flour', 'Eggs', 'Maple Syrup']
+        ingredients: [
+          { name: 'Whole Grain Flour', price: 0.8 },
+          { name: 'Eggs', price: 0.3 },
+          { name: 'Maple Syrup', price: 1.0 }
+        ]
       },
       lunch: {
         name: 'Grilled Salmon Salad',
@@ -133,7 +189,12 @@ export const mockMealData = [
         carbs: 15,
         protein: 40,
         fat: 30,
-        ingredients: ['Salmon', 'Spinach', 'Olive Oil', 'Lemon']
+        ingredients: [
+          { name: 'Salmon', price: 4.0 },
+          { name: 'Spinach', price: 0.6 },
+          { name: 'Olive Oil', price: 0.4 },
+          { name: 'Lemon', price: 0.3 }
+        ]
       },
       dinner: {
         name: 'Beef and Broccoli',
@@ -141,7 +202,12 @@ export const mockMealData = [
         carbs: 40,
         protein: 45,
         fat: 20,
-        ingredients: ['Beef', 'Broccoli', 'Garlic', 'Soy Sauce']
+        ingredients: [
+          { name: 'Beef', price: 3.5 },
+          { name: 'Broccoli', price: 1.0 },
+          { name: 'Garlic', price: 0.2 },
+          { name: 'Soy Sauce', price: 0.2 }
+        ]
       }
     }
   },
@@ -154,7 +220,12 @@ export const mockMealData = [
         carbs: 30,
         protein: 12,
         fat: 20,
-        ingredients: ['Chia Seeds', 'Almond Milk', 'Almonds', 'Honey']
+        ingredients: [
+          { name: 'Chia Seeds', price: 0.5 },
+          { name: 'Almond Milk', price: 0.7 },
+          { name: 'Almonds', price: 1.0 },
+          { name: 'Honey', price: 0.4 }
+        ]
       },
       lunch: {
         name: 'Tuna Salad',
@@ -162,7 +233,12 @@ export const mockMealData = [
         carbs: 10,
         protein: 40,
         fat: 25,
-        ingredients: ['Tuna', 'Lettuce', 'Olives', 'Olive Oil']
+        ingredients: [
+          { name: 'Tuna', price: 1.5 },
+          { name: 'Lettuce', price: 0.3 },
+          { name: 'Olives', price: 0.8 },
+          { name: 'Olive Oil', price: 0.4 }
+        ]
       },
       dinner: {
         name: 'Grilled Chicken and Sweet Potato',
@@ -170,7 +246,11 @@ export const mockMealData = [
         carbs: 50,
         protein: 45,
         fat: 15,
-        ingredients: ['Chicken', 'Sweet Potato', 'Olive Oil']
+        ingredients: [
+          { name: 'Chicken', price: 2.5 },
+          { name: 'Sweet Potato', price: 1.0 },
+          { name: 'Olive Oil', price: 0.4 }
+        ]
       }
     }
   },
@@ -183,23 +263,35 @@ export const mockMealData = [
         carbs: 10,
         protein: 30,
         fat: 5,
-        ingredients: ['Egg Whites', 'Spinach', 'Tomato']
+        ingredients: [
+          { name: 'Egg Whites', price: 0.5 },
+          { name: 'Spinach', price: 0.6 },
+          { name: 'Tomato', price: 0.4 }
+        ]
       },
       lunch: {
-        name: 'Vegetarian Wrap',
+        name: 'Chicken and Veggie Wrap',
         calories: 400,
-        carbs: 50,
-        protein: 15,
+        carbs: 30,
+        protein: 35,
         fat: 12,
-        ingredients: ['Whole Wheat Wrap', 'Hummus', 'Lettuce', 'Cucumber']
+        ingredients: [
+          { name: 'Chicken', price: 2.5 },
+          { name: 'Whole Wheat Wrap', price: 0.7 },
+          { name: 'Veggies', price: 1.0 }
+        ]
       },
       dinner: {
-        name: 'Pasta with Marinara Sauce',
+        name: 'Steak with Roasted Vegetables',
         calories: 600,
-        carbs: 70,
-        protein: 25,
-        fat: 15,
-        ingredients: ['Pasta', 'Tomato Sauce', 'Parmesan Cheese']
+        carbs: 40,
+        protein: 45,
+        fat: 25,
+        ingredients: [
+          { name: 'Steak', price: 5.0 },
+          { name: 'Potatoes', price: 1.0 },
+          { name: 'Carrots', price: 0.5 }
+        ]
       }
     }
   }
