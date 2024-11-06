@@ -1,24 +1,34 @@
-/* MealPlan.css */
+/* src/pages/MealPlan.css */
+
 .meal-plan-container {
-    display: flex;
-    overflow-x: auto; /* This enables horizontal scrolling */
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
-  
-  .day-card {
-    width: 300px; /* Set the width of each card */
-    margin-right: 20px; /* Optional space between cards */
-    flex-shrink: 0; /* Prevent cards from shrinking */
-  }
-  
-  h2 {
-    margin-left: 130px;
-  }
-  
-  /* Optional: styling for the individual day cards */
-  .day-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.nutrition-overview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.nutrition-overview-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.nutrition-overview-content {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  text-align: center;
+}

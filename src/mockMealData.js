@@ -1,6 +1,7 @@
 export const mockMealData = [
   {
     day: 'Day 1',
+    dayIndex: 1,
     meals: {
       breakfast: {
         name: 'Oatmeal',
@@ -42,6 +43,7 @@ export const mockMealData = [
   },
   {
     day: 'Day 2',
+    dayIndex: 2,
     meals: {
       breakfast: {
         name: 'Greek Yogurt with Granola',
@@ -84,6 +86,7 @@ export const mockMealData = [
   },
   {
     day: 'Day 3',
+    dayIndex: 3,
     meals: {
       breakfast: {
         name: 'Smoothie Bowl',
@@ -127,6 +130,7 @@ export const mockMealData = [
   },
   {
     day: 'Day 4',
+    dayIndex: 4,
     meals: {
       breakfast: {
         name: 'Egg and Avocado Toast',
@@ -170,6 +174,7 @@ export const mockMealData = [
   },
   {
     day: 'Day 5',
+    dayIndex: 5,
     meals: {
       breakfast: {
         name: 'Whole Grain Pancakes',
@@ -213,6 +218,7 @@ export const mockMealData = [
   },
   {
     day: 'Day 6',
+    dayIndex: 6,
     meals: {
       breakfast: {
         name: 'Chia Pudding with Almonds',
@@ -256,6 +262,7 @@ export const mockMealData = [
   },
   {
     day: 'Day 7',
+    dayIndex: 7,
     meals: {
       breakfast: {
         name: 'Egg White Omelette',
