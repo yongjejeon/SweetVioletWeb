@@ -29,7 +29,7 @@ const Preferences = () => {
 
   return (
     <div className="preference-container">
-      <h2 className="preference-title">Preferences</h2>
+      <h1 className="preference-title">Preferences</h1>
       <div className="selector">
         <Selector options={['Breakfast', 'Lunch', 'Dinner']} onSelect={setSelectedMeals} multiple={true} />
       </div>
