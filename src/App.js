@@ -6,6 +6,7 @@ import SignInHeader from './components/SignInHeader';
 import Preferences from './pages/Preferences';
 import MealPlan from './pages/MealPlan';
 import MealPlanDetail from './pages/MealPlanDetail';
+import MealPlanV2 from './pages/MealPlanV2';
 import SignIn from './pages/SignIn';
 import { AppProvider } from './AppContext';
 
@@ -22,7 +23,8 @@ const AppContent = () => {
           title="Sweet Violet"
           navItems={[
             { label: 'Preferences', href: '/preferences' },
-            { label: 'Meal Plan', href: '/meal-plan' },
+            //{ label: 'Meal Plan', href: '/meal-plan' },
+            { label: 'Meal Plan V2', href: '/meal-plan-v2' },
           ]}
         />
       )}
@@ -31,6 +33,7 @@ const AppContent = () => {
         <Route path="/preferences" element={<Preferences />} />
         <Route path="/meal-plan" element={<MealPlan />} />
         <Route path="/meal-plan/:day" element={<MealPlanDetail />} />
+        <Route path="/meal-plan-v2" element={<MealPlanV2 />} />
       </Routes>
     </>
   );
