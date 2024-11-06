@@ -23,7 +23,7 @@ const App = () => {
           <Route path="/" element={<Preferences />} />
           <Route path="/preferences" element={<Preferences />} />
           <Route path="/meal-plan" element={<MealPlan />} />
-          <Route path="/meal-plan/:day" element={<MealPlanDetail />} /> {/* Route for MealPlanDetail with dynamic day */}
+          <Route path="/meal-plan/:day" element={<MealPlanDetail />} /> {/* Ensure this route has :day parameter */}
         </Routes>
       </Router>
     </AppProvider>
