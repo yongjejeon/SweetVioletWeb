@@ -4,6 +4,9 @@ import React from 'react';
 const NutritionCard = ({ nutritionData }) => {
   const nutritionOverviewStyle = {
     marginBottom: '20px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center', // Centers content horizontally
   };
 
   const nutritionContainerStyle = {
@@ -11,8 +14,8 @@ const NutritionCard = ({ nutritionData }) => {
     overflowX: 'auto',
     padding: '10px',
     gap: '20px',
-    justifyContent: 'flex-start', // Allows items to start from the left
-    maxWidth: '100%', // Ensures it doesn't take more than available width
+    justifyContent: 'center', // Centers items within the container
+    maxWidth: '100%',
   };
 
   const nutritionCardStyle = {
@@ -33,7 +36,7 @@ const NutritionCard = ({ nutritionData }) => {
     fontSize: '1.2rem',
     marginBottom: '8px',
     color: '#333',
-    fontWeight: 'bold',
+    textAlign: 'center',
   };
 
   const valueStyle = {
@@ -44,7 +47,7 @@ const NutritionCard = ({ nutritionData }) => {
   const sectionTitleStyle = {
     fontSize: '1.5rem',
     fontWeight: 'bold',
-    textAlign: 'left',
+    textAlign: 'center', // Center-aligns section title
     marginBottom: '10px',
     color: '#333',
   };
