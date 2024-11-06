@@ -1,0 +1,73 @@
+// src/pages/MealPlan.js
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Button from '../components/Button';
+
+const MealPlan = () => {
+  const navigate = useNavigate();
+  const [mealPlan, setMealPlan] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Fetch data from the FastAPI backend
+    axios.get('http://127.0.0.1:8000/meal-plan')
+      .then((response) => {
+        setMealPlan(response.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError("Failed to fetch meal plan.");
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
+  return (
+    <div style={{ padding: '20px' }}>
+      {/* Header with Back Button */}
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+        <Button label="← Previous" onClick={() => navigate('/preferences')} variant="secondary" />
+        <h2 style={{ marginLeft: '10px' }}>Generated Meal Plan for the Week</h2>
+      </div>
+
+      {/* Scrollable Meal Plan Section */}
+      <div style={{ display: 'flex', overflowX: 'scroll', marginBottom: '20px', padding: '10px', border: '1px solid #ccc' }}>
+        {mealPlan.map((meal) => (
+          <div key={meal.day} style={{ minWidth: '200px', padding: '20px', border: '1px solid #ccc', marginRight: '10px', textAlign: 'center', backgroundColor: '#f0f0f0' }}>
+            <h3>Day {meal.day}</h3>
+            <p>Breakfast: {meal.breakfast}</p>
+            <p>Lunch: {meal.lunch}</p>
+            <p>Dinner: {meal.dinner}</p>
+            <p>$ Expected Price: {meal.price}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Nutrition Overview Section */}
+      <div style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc', textAlign: 'center', backgroundColor: '#e0e0e0' }}>
+        <h3>Nutrition Overview</h3>
+        <p>XXX Calories</p>
+        <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px', backgroundColor: '#d0d0d0' }}>
+          <div style={{ flex: 1, padding: '10px', backgroundColor: '#c0c0c0' }}>Carbs: Some Number and Percentage</div>
+          <div style={{ flex: 1, padding: '10px', backgroundColor: '#b0b0b0' }}>Protein: Some Number and Percentage</div>
+          <div style={{ flex: 1, padding: '10px', backgroundColor: '#a0a0a0' }}>Fat: Some Number and Percentage</div>
+          <div style={{ flex: 1, padding: '10px', backgroundColor: '#909090' }}>ETC</div>
+        </div>
+      </div>
+
+      {/* Action Buttons */}
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Button label="Select Meal Plan without Ordering" onClick={() => console.log('Select without ordering')} variant="primary" />
+        <Button label="Order Meal Plan" onClick={() => console.log('Order meal plan')} variant="primary" />
+        <Button label="Regenerate" onClick={() => console.log('Regenerate meal plan')} variant="primary" />
+      </div>
+    </div>
+  );
+};
+
+export default MealPlan;
