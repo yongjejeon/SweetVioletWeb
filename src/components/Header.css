@@ -1,9 +1,33 @@
 /* Header.css */
 .header {
-    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; /* Reduced padding */
     background-color: #333;
     color: white;
-    text-align: center;
-    font-size: 1.5em;
-    border-bottom: 2px solid #666;
-}
+    border-bottom: 1px solid #666; /* Reduced border thickness */
+  }
+  
+  .header-title {
+    margin: 0;
+    font-size: 1.5em; /* Reduced font size */
+    color: white;
+  }
+  
+  .nav-links {
+    display: flex;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px; /* Reduced spacing between links */
+    font-size: 0.9em; /* Reduced font size for links */
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+    color: #f0f0f0;
+  }
+  

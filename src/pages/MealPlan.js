@@ -1,11 +1,13 @@
 // src/pages/MealPlan.js
-import Button from '../components/Button';
-import AppContext from '../AppContext'; //this js file stores the inputs from Preferences.js
 import React, { useContext } from 'react';
+import AppContext from '../AppContext'; //this js file stores the inputs from Preferences.js
+import DayCard from '../components/DayCard';
+import NutritionOverview from '../components/NutritionOverview';
+import ActionButtons from '../components/ActionButtons';
 import './MealPlan.css';
 
-const MealPlan = () => { //add this to access inputs
-  /*const {
+const MealPlan = () => {
+  const {
     selectedMeals,
     setSelectedMeals,
     selectedGoal,
@@ -15,7 +17,13 @@ const MealPlan = () => { //add this to access inputs
     height,
     setHeight,
   } = useContext(AppContext);
-  */
+
+  // Assuming these values are coming from the context (replace with actual data)
+  const calories = 2000;
+  const carbs = '250g';
+  const protein = '100g';
+  const fat = '70g';
+
   return (
     <div style={{ padding: '20px' }}>
       {/* Header with Back Button */}
@@ -25,35 +33,16 @@ const MealPlan = () => { //add this to access inputs
 
       {/* Scrollable Meal Plan Section */}
       <div style={{ display: 'flex', overflowX: 'scroll', marginBottom: '20px', padding: '10px', border: '1px solid #ccc' }}>
-        {[... Array(7).keys()].map((day) => (
-          <div key={day} style={{ minWidth: '200px', padding: '20px', border: '1px solid #ccc', marginRight: '10px', textAlign: 'center', backgroundColor: '#f0f0f0' }}>
-            <h3>Day {day +1} </h3>
-            <p>Breakfast:</p>
-            <p>Lunch: </p>
-            <p>Dinner: </p>
-            <p>$ Expected Price: </p>
-          </div>
+        {[...Array(7).keys()].map((day) => (
+          <DayCard key={day} day={day + 1} />
         ))}
       </div>
 
       {/* Nutrition Overview Section */}
-      <div style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc', textAlign: 'center', backgroundColor: '#e0e0e0' }}>
-        <h3>Nutrition Overview</h3>
-        <p>XXX Calories</p>
-        <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px', backgroundColor: '#d0d0d0' }}>
-          <div style={{ flex: 1, padding: '10px', backgroundColor: '#c0c0c0' }}>Carbs: Some Number and Percentage</div>
-          <div style={{ flex: 1, padding: '10px', backgroundColor: '#b0b0b0' }}>Protein: Some Number and Percentage</div>
-          <div style={{ flex: 1, padding: '10px', backgroundColor: '#a0a0a0' }}>Fat: Some Number and Percentage</div>
-          <div style={{ flex: 1, padding: '10px', backgroundColor: '#909090' }}>ETC</div>
-        </div>
-      </div>
+      <NutritionOverview calories={calories} carbs={carbs} protein={protein} fat={fat} />
 
       {/* Action Buttons */}
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button label="Select Meal Plan without Ordering" onClick={() => console.log('Select without ordering')} variant="primary" />
-        <Button label="Order Meal Plan" onClick={() => console.log('Order meal plan')} variant="primary" />
-        <Button label="Regenerate" onClick={() => console.log('Regenerate meal plan')} variant="primary" />
-      </div>
+      <ActionButtons />
     </div>
   );
 };
