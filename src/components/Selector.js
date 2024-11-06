@@ -7,14 +7,12 @@ const Selector = ({ options, onSelect, multiple = false }) => {
   const handleSelect = (option) => {
     let updatedSelection;
     if (multiple) {
-      // Handle multiple selections
       if (selectedOptions.includes(option)) {
         updatedSelection = selectedOptions.filter((item) => item !== option);
       } else {
         updatedSelection = [...selectedOptions, option];
       }
     } else {
-      // Handle single selection
       updatedSelection = selectedOptions[0] === option ? [] : [option];
     }
     setSelectedOptions(updatedSelection);
@@ -22,16 +20,20 @@ const Selector = ({ options, onSelect, multiple = false }) => {
   };
 
   return (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
       {options.map((option, index) => (
         <button
           key={index}
           onClick={() => handleSelect(option)}
           style={{
-            padding: '10px',
+            padding: '10px 15px',
             margin: '5px',
             backgroundColor: selectedOptions.includes(option) ? '#333' : '#ccc',
             color: selectedOptions.includes(option) ? '#fff' : '#000',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+            fontSize: '20px',
           }}
         >
           {option}
