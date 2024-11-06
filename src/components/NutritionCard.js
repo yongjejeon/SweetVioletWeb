@@ -11,7 +11,8 @@ const NutritionCard = ({ nutritionData }) => {
     overflowX: 'auto',
     padding: '10px',
     gap: '20px',
-    justifyContent: 'center',
+    justifyContent: 'flex-start', // Allows items to start from the left
+    maxWidth: '100%', // Ensures it doesn't take more than available width
   };
 
   const nutritionCardStyle = {
@@ -43,7 +44,7 @@ const NutritionCard = ({ nutritionData }) => {
   const sectionTitleStyle = {
     fontSize: '1.5rem',
     fontWeight: 'bold',
-    textAlign: 'left', // Aligns "Nutrition Overview" to the left
+    textAlign: 'left',
     marginBottom: '10px',
     color: '#333',
   };

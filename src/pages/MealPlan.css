@@ -1,14 +1,16 @@
 /* src/pages/MealPlan.css */
 
+/* MealPlan.css */
 .meal-plan-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Allows horizontal scrolling */
+    gap: 20px;
+    align-items: flex-start; /* Adjust as necessary */
+    justify-content: flex-start; /* Ensures items align to the start */
+    padding-bottom: 15px;
+  }
+  
 
 .nutrition-overview {
   display: flex;

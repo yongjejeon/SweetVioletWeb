@@ -1,8 +1,5 @@
-// src/pages/MealPlan.js
 import React, { useContext } from 'react';
 import AppContext from '../AppContext';
-import { useNavigate } from 'react-router-dom';
-import AppContext from '../AppContext'; // This js file stores the inputs from Preferences.js
 import DayCard from '../components/DayCard';
 import NutritionCard from '../components/NutritionCard'; // Updated import
 import ActionButtons from '../components/ActionButtons';
@@ -10,8 +7,16 @@ import { mockMealData } from '../mockMealData';
 import './MealPlan.css';
 
 const MealPlan = () => {
-  const { selectedMeals, selectedGoal, weight, height } = useContext(AppContext);
-  const navigate = useNavigate();
+  const {
+    selectedMeals,
+    setSelectedMeals,
+    selectedGoal,
+    setSelectedGoal,
+    weight,
+    setWeight,
+    height,
+    setHeight,
+  } = useContext(AppContext);
 
   const calculateTotalPrice = (meals) => {
     return Object.values(meals).reduce((totalPrice, meal) => {
@@ -51,29 +56,22 @@ const MealPlan = () => {
     { label: 'Fat', value: `${totalWeeklyNutrition.fat}g` },
   ];
 
-  // Handler for navigating to the meal plan detail page for a specific day
-  const handleDayClick = (dayIndex) => {
-    navigate(`/meal-plan/${dayIndex}`);
-  };
-
   return (
     <div style={{ padding: '20px' }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
         <h2 style={{ marginLeft: '0px' }}>Generated Meal Plan for the Week</h2>
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <h1>Generated Meal Plan for the Week</h1>
       </div>
 
       <div className="meal-plan-container">
         {mockMealData.map((dayData, dayIndex) => {
-      {/* Scrollable Meal Plan Section */}
-      <div style={{ display: 'flex', overflowX: 'scroll', marginBottom: '20px', padding: '10px', border: '1px solid #ccc' }}>
-        {mockMealData.map((dayData) => {
           const totalPrice = calculateTotalPrice(dayData.meals);
           return (
-            <div key={dayData.dayIndex} onClick={() => handleDayClick(dayData.dayIndex)} style={{ cursor: 'pointer' }}>
-              <DayCard day={dayData.day} meals={dayData.meals} totalPrice={totalPrice} />
-            </div>
+            <DayCard
+              key={dayIndex}
+              day={dayData.day}
+              meals={dayData.meals}
+              totalPrice={totalPrice}
+            />
           );
         })}
       </div>
@@ -82,8 +80,6 @@ const MealPlan = () => {
         <NutritionCard nutritionData={nutritionData} />
       </div>
 
-
-      {/* Action Buttons */}
       <ActionButtons />
     </div>
   );
