@@ -3,7 +3,9 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { mockMealData } from '../mockMealData';
 import './MealPlanDetail.css';
-import arrowRight from '../images/arrow-right.png'; // Import the arrow image
+import ArrowButton from '../components/ArrowButton';
+import NutritionInfo from '../components/NutritionInfo';
+import IngredientList from '../components/IngredientList';
 
 const MealPlanDetail = () => {
   const { day } = useParams();
@@ -26,16 +28,9 @@ const MealPlanDetail = () => {
     <div className="meal-plan-detail">
       <h1>Meal Plan Details for {dayData.day}</h1>
 
-      {/* Flex container for arrows and meal columns */}
       <div className="meal-plan-content">
         {/* Left Arrow */}
-        <img
-          src={arrowRight}
-          alt="Previous"
-          className="arrow arrow-left"
-          onClick={handlePreviousDay}
-          style={{ opacity: dayIndex === 1 ? 0.5 : 1, cursor: dayIndex === 1 ? 'not-allowed' : 'pointer' }}
-        />
+        <ArrowButton direction="left" onClick={handlePreviousDay} disabled={dayIndex === 1} />
 
         {/* Meal Columns */}
         <div className="meal-plan-columns">
@@ -45,41 +40,21 @@ const MealPlanDetail = () => {
               <p className="meal-plan-title">{mealData.name}</p>
 
               <div className="meal-details">
-                <div className="meal-nutrition">
-                  <h4>Nutritions</h4>
-                  <div className="nutrition-content">
-                    <p>Calories: {mealData.calories}Kcal</p>
-                    <p>Carbs: {mealData.carbs}g</p>
-                    <p>Protein: {mealData.protein}g</p>
-                    <p>Fat: {mealData.fat}g</p>
-                  </div>
-                </div>
+                <NutritionInfo
+                  calories={mealData.calories}
+                  carbs={mealData.carbs}
+                  protein={mealData.protein}
+                  fat={mealData.fat}
+                />
 
-                <div className="meal-ingredients">
-                  <h4>Ingredients</h4>
-                  <div className="ingredients-content">
-                    {mealData.ingredients.map((ingredient, index) => (
-                      <p key={index}>
-                        {ingredient.name}
-                        <br></br> 
-                        ${ingredient.price.toFixed(2)}
-                      </p>
-                    ))}
-                  </div>
-                </div>
+                <IngredientList ingredients={mealData.ingredients} />
               </div>
             </div>
           ))}
         </div>
 
         {/* Right Arrow */}
-        <img
-          src={arrowRight}
-          alt="Next"
-          className="arrow arrow-right"
-          onClick={handleNextDay}
-          style={{ opacity: dayIndex === 7 ? 0.5 : 1, cursor: dayIndex === 7 ? 'not-allowed' : 'pointer' }}
-        />
+        <ArrowButton direction="right" onClick={handleNextDay} disabled={dayIndex === 7} />
       </div>
     </div>
   );
