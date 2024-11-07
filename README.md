@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# Sweet Violet Meal Planner
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a Meal Planner Application built using React for the frontend and FastAPI for the backend. The application allows users to input meal preferences and dietary goals to generate a weekly meal plan with nutrition breakdowns.
 
-## Available Scripts
+## Table of Contents
+- Project Description
+- Component Documentation
+- Setup Instructions
+- Development Process
+- Design Decisions
+- Technical Choices
+- AI Usage
 
-In the project directory, you can run:
+## Project Description
 
-### `npm start`
+The Sweet Violet Meal Planner enables users to personalize meal plans based on their preferences. After setting preferences like meal types, dietary restrictions, and health goals, users generate a weekly meal plan that displays the average nutritional values (e.g., calories, carbs, protein, fat) and includes an option to view more detailed nutritional information.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The application includes the following key pages:
+- **Preferences Page**: Collects user preferences for meal types, dietary restrictions, health goals, and personal details like weight and height.
+- **Meal Plan Page**: Displays a weekly scrollable meal plan with a breakdown of daily meals, total cost estimates, and average nutrition values.
+- **Detailed Meal Plan Page**: Provides additional details on daily meals and individual nutritional information.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Component Documentation
 
-### `npm test`
+### App.js
+- **Description**: Main component that sets up routing for the application and includes global elements like the header.
+- **Props**: None
+- **State**: None
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Selector.js
+- **Description**: Reusable component for selecting multiple or single items (e.g., meal types or health goals).
+- **Props**:
+  - `options` (array): Array of strings representing the options.
+  - `onSelect` (function): Callback function triggered when an option is selected.
+  - `multiple` (boolean): If true, allows multiple selections.
+- **State**:
+  - `selectedOptions` (array): Tracks selected options (if multiple) or a single option.
 
-### `npm run build`
+### Input.js
+- **Description**: A reusable input component that accepts various input types and custom labels.
+- **Props**:
+  - `label` (string): The label displayed above the input field.
+  - `type` (string): Specifies the input type, e.g., “text”, “number”.
+  - `value` (string): The current value of the input field.
+  - `onChange` (function): Callback function triggered when the input value changes.
+  - `placeholder` (string): Placeholder text for the input field.
+- **State**: None
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Button.js
+- **Description**: Reusable button component with custom styling for different actions.
+- **Props**:
+  - `label` (string): Text displayed on the button.
+  - `onClick` (function): Function to be called on button click.
+  - `variant` (string): Determines button styling.
+- **State**: None
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### NutritionOverview.js
+- **Description**: Displays a scrollable overview of average daily nutritional values, including calories, carbs, protein, and fat.
+- **Props**:
+  - `calories` (number): Average daily calorie intake.
+  - `carbs` (number): Average daily carbohydrate intake in grams.
+  - `protein` (number): Average daily protein intake in grams.
+  - `fat` (number): Average daily fat intake in grams.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### DayCard.js
+- **Description**: Represents a single day’s meal plan, displaying breakfast, lunch, and dinner details, along with the total price for the day.
+- **Props**:
+  - `day` (string): The label for the day (e.g., “Day 1”).
+  - `meals` (object): Contains meal information with breakfast, lunch, and dinner as properties, each having a name attribute.
+  - `totalPrice` (number): The total cost of all meals for the day.
 
-### `npm run eject`
+### ActionButtons.js
+- **Description**: A reusable component that displays three primary action buttons for managing the meal plan: “Select Meal Plan without Ordering,” “Order Meal Plan,” and “Regenerate.”
+- **Props**: None (button actions are handled internally within the component).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### IngredientList.js
+- **Description**: A component that displays ingredients in the form of a list, including the price for each ingredient.
+- **Props**:
+  - `name` (string): Name of the ingredient.
+  - `price` (number): Price of the ingredient.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### ArrowButton.js
+- **Description**: An image that acts as a button to switch between meal plan days.
+- **Props**:
+  - `img` (string): Displays image of the arrow button.
+  - `onClick` (function): Function called when the image is clicked.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Pages Documentation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### MealPlan.js
+- **Description**: Displays a generated weekly meal plan with a scrollable list of days. Shows an average nutrition overview with calculated daily average values for calories, carbs, protein, and fat.
+- **Props**: None
+- **State**:
+  - `mealPlan` (array): Holds the weekly meal data from mockMealData.
 
-## Learn More
+### Preferences.js
+- **Description**: Collects user input on meal preferences, dietary restrictions, goals, and physical metrics. Includes a button to generate the meal plan.
+- **Props**: None
+- **State**:
+  - `selectedMeals` (array): Tracks selected meal types.
+  - `dietaryRestrictions` (string): Stores dietary restrictions input.
+  - `selectedGoal` (string): Tracks the selected health goal.
+  - `weight` and `height` (string): Store the user’s weight and height.
+- **Functions**:
+  - `handleGenerateMealPlan()`: Navigates to the Meal Plan page.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### MealPlanDetail.js
+- **Description**: Displays the meal plan in more detail, showing the plan for each day and displaying nutritional information and the ingredients/price for each meal.
+- **State**:
+  - `mealType` (array): Holds the type of meal (breakfast, lunch, dinner).
+  - `mealData` (array): Holds data of meal, such as nutrition and ingredients.
+- **Functions**:
+  - `handlePreviousDay()`: Proceeds to the next meal.
+  - `handleNextDay()`: Proceeds to the previous meal.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Setup Instructions
+1. **Clone the Repository**: 
+   - git clone https://github.com/yongjejeon/SweetVioletWeb.git
+2. **Install Dependencies**: Run `npm install` to install required packages.
+3. **Start the React Development Server**: Use `npm start` to start the application.
+4. **View Application**: Open `http://localhost:3000` in a browser to access the frontend.
 
-### Code Splitting
+## Development Process
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Design Decisions
+- **Preferences Collection**: The Preferences Page allows users to select multiple meal types and enter personalized dietary preferences, providing a tailored meal planning experience.
+- **Scrollable Meal Plan View**: The Meal Plan Page displays each day’s meals in a horizontally scrollable view to enhance readability.
 
-### Analyzing the Bundle Size
+### Technical Choices
+- **React**: Used for building a modular frontend with components for each part of the UI (e.g., Preferences, Meal Plan, Buttons). React’s component-based structure ensures that each part of the UI is reusable and maintains a clear separation of concerns.
+- **State Management**: Simple React state was used for managing UI state, keeping the application lightweight and straightforward for this scope of the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## AI Usage
+- **AI Assistance**: AI was used to generate initial code templates for component structure and mock data, provide guidance on best practices for component reusability, and suggest improvements for code organization.
+- **Justification**: Using AI accelerated development by generating base code, allowing for faster iterations and testing of features like average nutrient calculations and component layout.
