@@ -2,6 +2,8 @@
 
 This project is a Meal Planner Application built using React for the frontend and FastAPI for the backend. The application allows users to input meal preferences and dietary goals to generate a weekly meal plan with nutrition breakdowns.
 
+Link to Wireframe: https://www.figma.com/design/835kS7BAVDMVakyTN0xZQi/Sweet-Violet-Wireframe?node-id=0-1&m=dev&t=XVZpzYJRcE4v3Hvs-1
+
 ## Table of Contents
 - Project Description
 - Component Documentation
