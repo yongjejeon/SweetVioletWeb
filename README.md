@@ -119,6 +119,7 @@ The application includes the following key pages:
 1. **Clone the Repository**: 
    - git clone https://github.com/yongjejeon/SweetVioletWeb.git
 2. **Install Dependencies**: Run `npm install` to install required packages.
+3. **Run Backend**: ensure that your backend server is running to dynamically load content on the meal plan page
 3. **Start the React Development Server**: Use `npm start` to start the application.
 4. **View Application**: Open `http://localhost:3000` in a browser to access the frontend.
 
