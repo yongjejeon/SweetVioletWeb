@@ -21,7 +21,6 @@ const MealPlanV2 = () => {
         setMealData(randomMealPlan);
         console.log('Fetched and selected meal plan:', randomMealPlan);
 
-        // Fetch all meal details for the selected meal plan
         await fetchMealDetails(randomMealPlan.scheduledDates);
       } catch (error) {
         console.error('Error fetching meal plans:', error);
@@ -36,7 +35,6 @@ const MealPlanV2 = () => {
           scheduledDates.map(async (dayData) => {
             const mealsForDay = [];
 
-            // Fetch the details for breakfast, lunch, and dinner
             for (const mealType of ['breakfast', 'lunch', 'dinner']) {
               const mealId = dayData[mealType];
               if (mealId) {
@@ -49,10 +47,7 @@ const MealPlanV2 = () => {
               }
             }
 
-            return {
-              day: dayData.day,
-              meals: mealsForDay
-            };
+            return { day: dayData.day, meals: mealsForDay };
           })
         );
         setMealDetails(mealDetailsArray);
@@ -65,16 +60,28 @@ const MealPlanV2 = () => {
     fetchMealPlans();
   }, []);
 
-  // Ensure nutrition is fetched from targetNutrition
-  const nutrition = mealData?.targetNutrition ? [
-    { label: 'Calories', value: mealData.targetNutrition.calories },
-    { label: 'Carbs (g)', value: mealData.targetNutrition.carbs },
-    { label: 'Protein (g)', value: mealData.targetNutrition.protein },
-    { label: 'Fat (g)', value: mealData.targetNutrition.fat }
-  ] : [];
+  const nutrition = mealData?.targetNutrition
+    ? [
+        { label: 'Calories', value: mealData.targetNutrition.calories },
+        { label: 'Carbs (g)', value: mealData.targetNutrition.carbs },
+        { label: 'Protein (g)', value: mealData.targetNutrition.protein },
+        { label: 'Fat (g)', value: mealData.targetNutrition.fat },
+      ]
+    : [];
 
-  // Log nutrition data to verify
-  console.log('Nutrition data:', nutrition);
+  const actionButtonsConfig = [
+    {
+      label: 'Generate Shopping List',
+      onClick: () => console.log('Generate Shopping List clicked'),
+      variant: 'primary',
+    },
+    {
+      label: 'Regenerate Meal Plan',
+      onClick: () => console.log('Regenerate Meal Plan clicked'),
+      variant: 'primary',
+    },
+    // Add more button configurations as needed
+  ];
 
   if (loading) {
     return <div>Loading...</div>;
@@ -86,29 +93,19 @@ const MealPlanV2 = () => {
         <h1>Generated Meal Plan for the Week</h1>
       </div>
 
-      {/* Scrollable Meal Plan Section */}
       <div style={{ display: 'flex', overflowX: 'scroll', marginBottom: '20px', padding: '10px', border: '1px solid #ccc' }}>
-        {mealDetails?.map((dayData, index) => {
-          // Ensure mealData and mealDetails are available
-          if (!mealData || !mealDetails.length) return null;
-
-          // Log the available meals for the day
-          console.log(`Processing dayData for day ${dayData.day}:`, dayData);
-
-          return (
-            <div key={index} style={{ cursor: 'pointer' }}>
-              <DayCard day={dayData.day} meals={dayData.meals} />
-            </div>
-          );
-        })}
+        {mealDetails?.map((dayData, index) => (
+          <div key={index} style={{ cursor: 'pointer' }}>
+            <DayCard day={dayData.day} meals={dayData.meals} />
+          </div>
+        ))}
       </div>
 
-      {/* Nutrition Overview Section */}
       <div className="meal-plan-container">
         {nutrition.length > 0 && <NutritionCard nutritionData={nutrition} />}
       </div>
 
-      <ActionButtons />
+      <ActionButtons buttons={actionButtonsConfig} />
     </div>
   );
 };
