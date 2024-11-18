@@ -9,6 +9,8 @@ import './MealPlan.css';
 
 const MealPlanV2 = () => {
   const { mealData, mealDetails, loading } = useAppContext();
+  
+
   const navigate = useNavigate(); // Initialize useNavigate
 
   const nutrition = mealData?.targetNutrition
@@ -27,6 +29,11 @@ const MealPlanV2 = () => {
       variant: 'primary',
     },
     {
+      label: 'Cooking Instructions',
+      onClick: () => navigate('/how-to-cook'),
+      variant: 'primary',
+    },
+    {
       label: 'Regenerate Meal Plan',
       onClick: () => console.log('Regenerate Meal Plan clicked'),
       variant: 'primary',
@@ -40,11 +47,16 @@ const MealPlanV2 = () => {
   const handleDayClick = (day) => {
     navigate(`/meal-plan/${day}`); // Navigate to the detail page for the specific day
   };
+  const handleCookClick = (day) => {
+    navigate(`/meal-plan/${day}`); // Navigate to the detail page for the specific day
+  };
 
   return (
+    
     <div style={{ padding: '20px' }}>
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <h1>Generated Meal Plan for the Week</h1>
+        
       </div>
 
       <div style={{ display: 'flex', overflowX: 'scroll', marginBottom: '20px', padding: '10px', border: '1px solid #ccc' }}>

@@ -1,141 +1,153 @@
 /* src/pages/HowToCook.css */
 
-
-
 .how-to-cook-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Navigation arrows and title for the day */
-  .day-navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin-bottom: 20px;
-  }
-  
-  .day-navigation h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .nav-arrow {
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .nav-arrow:hover {
-    color: #007bff;
-  }
-  
-  /* Main content layout */
-  .how-to-cook-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 1200px;
-    gap: 20px;
-  }
-  
-  /* Left section: Picture and details */
-  .left-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  /* Image box styling */
-  .picture-box {
-    background-color: #e0e0e0;
-    width: 100%;
-    height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #666;
-    border-radius: 8px;
-  }
-  
-  /* Nutritional and ingredient information */
-  .details-section {
-    display: flex;
-    gap: 20px;
-  }
-  
-  /* Nutritional box styling */
-  .calorie-box, .ingredient-box {
-    flex: 1;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow-y: auto;
-    max-height: 200px;
-  }
-  
-  .calorie-box h3, .ingredient-box h3 {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .details-section p {
-    margin: 5px 0;
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  /* Right section: Cooking instructions */
-  .right-section {
-    flex: 2;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow-y: auto;
-    max-height: 500px;
-  }
-  
-  .right-section h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .right-section p {
-    margin-bottom: 15px;
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  /* See full meal plan button */
-  .full-meal-plan-btn {
-    width: 100%;
-    max-width: 300px;
-    margin: 20px auto 0;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    font-size: 1rem;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .full-meal-plan-btn:hover {
-    background-color: #0056b3;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Navigation arrows and title for the meal */
+.day-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+}
+
+.day-navigation h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.nav-arrow {
+  font-size: 2rem; /* Larger arrow size */
+  cursor: pointer;
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  align-items: center; /* Vertically center the arrows */
+  justify-content: center; /* Center horizontally */
+  width: 40px; /* Set a fixed width */
+  height: 40px; /* Set a fixed height */
+}
+
+.nav-arrow:hover {
+  color: #007bff;
+}
+
+/* Main content layout */
+.how-to-cook-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  gap: 20px;
+}
+
+/* Left section: Picture and details */
+.left-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Image box styling */
+.picture-box {
+  background-color: #e0e0e0;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #666;
+  border-radius: 8px;
+}
+
+/* Nutritional and ingredient information */
+.details-section {
+  display: flex;
+  gap: 20px;
+}
+
+/* Nutritional box styling */
+.calorie-box, .ingredient-box {
+  flex: 1;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.calorie-box h3, .ingredient-box h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.details-section p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Right section: Cooking instructions */
+.right-section {
+  flex: 2;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+.right-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.right-section p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* See full meal plan button */
+.full-meal-plan-btn {
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.full-meal-plan-btn:hover {
+  background-color: #0056b3;
+}
+
+.meal-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}

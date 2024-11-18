@@ -8,6 +8,7 @@ import MealPlanDetailV2 from './pages/MealPlanDetailV2'; // Import the new MealP
 import MealPlanV2 from './pages/MealPlanV2';
 import SignIn from './pages/SignIn';
 import { AppProvider } from './AppContext';
+import HowToCook from './pages/HowToCook';
 
 const AppContent = () => {
   const location = useLocation();
@@ -31,6 +32,7 @@ const AppContent = () => {
         <Route path="/preferences" element={<Preferences />} />
         <Route path="/meal-plan-v2" element={<MealPlanV2 />} />
         <Route path="/meal-plan/:day" element={<MealPlanDetailV2 />} /> {/* Updated route */}
+        <Route path="/how-to-cook" element={<HowToCook />} />
       </Routes>
     </>
   );

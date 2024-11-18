@@ -1,51 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './HowToCook.css'; // Import the CSS file
-import { useNavigate } from 'react-router-dom';
-import AppContext from '../AppContext';
-
+import { useAppContext } from '../AppContext';
+import { useNavigate } from 'react-router-dom'; 
 
 const HowToCook = () => {
-  // Mock data for the page
-  const mockData = {
-    day: 'Day 1',
-    meal: 'Breakfast',
-    image: 'https://via.placeholder.com/250', // Placeholder image URL
-    nutrition: {
-      calories: 350,
-      carbs: 45,
-      protein: 15,
-      fat: 10,
-      vitamins: 'A, C, D',
-    },
-    ingredients: [
-      { name: 'Eggs', price: 2.5 },
-      { name: 'Bread', price: 1.0 },
-      { name: 'Milk', price: 1.5 },
-      { name: 'Butter', price: 0.5 },
-      { name: 'Salt', price: 0.2 },
-    ],
-    steps: [
-      'Crack the eggs into a bowl and whisk until smooth.',
-      'Heat a pan on medium heat and add butter.',
-      'Pour the whisked eggs into the pan and stir gently.',
-      'Toast the bread slices in a toaster.',
-      'Serve the scrambled eggs with toasted bread and enjoy!',
-    ],
+  const { mealDetails, loading } = useAppContext();
+  const [currentDayIndex, setCurrentDayIndex] = useState(0); // Track the current day
+  const [currentMealIndex, setCurrentMealIndex] = useState(0); // Track the current meal
+
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!mealDetails || mealDetails.length === 0) {
+    return <div>No meal details available</div>;
+  }
+
+  const currentDay = mealDetails[currentDayIndex];
+  const currentMeal = currentDay.meals[currentMealIndex];
+
+  const navigateToPreviousMeal = () => {
+    if (currentMealIndex > 0) {
+      setCurrentMealIndex(currentMealIndex - 1);
+    } else if (currentDayIndex > 0) {
+      setCurrentDayIndex(currentDayIndex - 1);
+      setCurrentMealIndex(mealDetails[currentDayIndex - 1].meals.length - 1);
+    }
   };
 
-  // Total price calculation
-  const totalPrice = mockData.ingredients.reduce((total, item) => total + item.price, 0).toFixed(2);
+  const navigateToNextMeal = () => {
+    if (currentMealIndex < currentDay.meals.length - 1) {
+      setCurrentMealIndex(currentMealIndex + 1);
+    } else if (currentDayIndex < mealDetails.length - 1) {
+      setCurrentDayIndex(currentDayIndex + 1);
+      setCurrentMealIndex(0);
+    }
+  };
+
+  // Placeholder steps for mock data
+  const steps = [
+    'Crack the eggs into a bowl and whisk until smooth.',
+    'Heat a pan on medium heat and add butter.',
+    'Pour the whisked eggs into the pan and stir gently.',
+    'Toast the bread slices in a toaster.',
+    'Serve the scrambled eggs with toasted bread and enjoy!',
+  ];
 
   return (
     <div className="how-to-cook-container">
       {/* Navigation */}
       <div className="day-navigation">
-        <span className="nav-arrow" onClick={() => console.log('Navigate to Previous Meal')}>
-          &lt; Yesterday’s Dinner
+        <span className="nav-arrow left-arrow" onClick={navigateToPreviousMeal}>
+          &lt;
         </span>
-        <h1>{mockData.day}</h1>
-        <span className="nav-arrow" onClick={() => console.log('Navigate to Next Meal')}>
-          Lunch &gt;
+        <h1 className="meal-title">{currentMeal.Recipe_Name || 'Meal Title'}</h1>
+        <span className="nav-arrow right-arrow" onClick={navigateToNextMeal}>
+          &gt;
         </span>
       </div>
 
@@ -56,8 +68,8 @@ const HowToCook = () => {
           {/* Meal Picture */}
           <div className="picture-box">
             <img
-              src={mockData.image}
-              alt={`${mockData.meal}`}
+              src={'https://via.placeholder.com/250'}
+              alt={`${currentMeal.Recipe_Name || 'Meal'}`}
               style={{ width: '100%', height: '100%', borderRadius: '8px' }}
             />
           </div>
@@ -66,22 +78,20 @@ const HowToCook = () => {
           <div className="details-section">
             {/* Nutritional Info */}
             <div className="calorie-box">
-              <h3>Calories: {mockData.nutrition.calories} kcal</h3>
-              <p>Carbs: {mockData.nutrition.carbs}g</p>
-              <p>Protein: {mockData.nutrition.protein}g</p>
-              <p>Fat: {mockData.nutrition.fat}g</p>
-              <p>Vitamins: {mockData.nutrition.vitamins}</p>
+              <h3>Calories: {currentMeal.nutrients?.ENERC_KCAL || 0} kcal</h3>
+              <p>Carbs: {currentMeal.nutrients?.CHOCDF || 0}g</p>
+              <p>Protein: {currentMeal.nutrients?.PROCNT || 0}g</p>
+              <p>Fat: {currentMeal.nutrients?.FAT || 0}g</p>
             </div>
 
             {/* Ingredients */}
             <div className="ingredient-box">
               <h3>Ingredients</h3>
-              {mockData.ingredients.map((ingredient, index) => (
+              {currentMeal.ingredients?.map((ingredient, index) => (
                 <p key={index}>
-                  {ingredient.name} - ${ingredient.price.toFixed(2)}
+                  {ingredient.name || 'Ingredient'}
                 </p>
               ))}
-              <p><strong>Expected Price: ${totalPrice}</strong></p>
             </div>
           </div>
         </div>
@@ -89,7 +99,7 @@ const HowToCook = () => {
         {/* Right Section */}
         <div className="right-section">
           <h3>How to Cook?</h3>
-          {mockData.steps.map((step, index) => (
+          {steps.map((step, index) => (
             <p key={index}>
               <strong>Step {index + 1}:</strong> {step}
             </p>
@@ -98,7 +108,7 @@ const HowToCook = () => {
       </div>
 
       {/* See Full Meal Plan Button */}
-      <button className="full-meal-plan-btn" onClick={() => console.log('Navigate to Full Meal Plan')}>
+      <button className="full-meal-plan-btn" onClick={() => navigate('/meal-plan-v2')}>
         See Full Meal Plan
       </button>
     </div>
