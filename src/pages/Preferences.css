@@ -1,14 +1,14 @@
-/* src/pages/Preference.css */
+src/pages/Preference.css
 
 .preference-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Align items from the top */
+  justify-content: flex-start; 
   padding: 20px;
   width: 100%;
   max-width: 800px;
-  margin: 0 auto; /* Centers the container horizontally */
+  margin: 0 auto; 
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -22,9 +22,9 @@
   margin-bottom: 20px;
   text-align: center;
   width: 100%;
-  max-width: 800px; /* Set a maximum width for the title */
+  max-width: 800px; 
   margin-left: auto;
-  margin-right: auto; /* Centers the title horizontally */
+  margin-right: auto; 
 }
 
 .selector {
@@ -35,7 +35,7 @@
   margin-top: 50px;
   display: flex;
   justify-content: center;
-  gap: 250px; /* Space between height and weight inputs */
+  gap: 250px; 
   margin-bottom: 20px;
   width: 100%;
   max-width: 400px;
@@ -48,9 +48,9 @@
 }
 
 .input-icon {
-  width: 100px; /* Adjust icon size as needed */
+  width: 100px; 
   height: auto;
-  margin-bottom: 5px; /* Space between icon and input */
+  margin-bottom: 5px; 
 }
 
 .button {

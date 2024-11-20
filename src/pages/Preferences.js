@@ -24,7 +24,7 @@ const Preferences = () => {
   const navigate = useNavigate();
 
   const handleGenerateMealPlan = () => {
-    navigate('/meal-plan-v2');
+    navigate('/Question0');
   };
 
   return (

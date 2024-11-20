@@ -7,9 +7,12 @@ export const useAppContext = () => useContext(AppContext); // Custom hook for ea
 
 export const AppProvider = ({ children }) => {
   const [selectedMeals, setSelectedMeals] = useState([]);
+  const [gender, setGender] = useState([]);
+  const [activityLevel, setActivityLevel] = useState([]);
   const [selectedGoal, setSelectedGoal] = useState(null);
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
+  const [Goals, setGoals] = useState('');
   const [mealData, setMealData] = useState(null);
   const [mealDetails, setMealDetails] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -62,6 +65,8 @@ export const AppProvider = ({ children }) => {
         setSelectedMeals,
         selectedGoal,
         setSelectedGoal,
+        activityLevel,
+        setActivityLevel,
         weight,
         setWeight,
         height,
@@ -69,6 +74,10 @@ export const AppProvider = ({ children }) => {
         mealData,
         mealDetails,
         loading,
+        gender,
+        setGender,
+        Goals,
+        setGoals,
       }}
     >
       {children}
