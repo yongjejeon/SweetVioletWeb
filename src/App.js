@@ -28,7 +28,7 @@ const AppContent = () => {
         />
       )}
       <Routes>
-        <Route path="/" element={<SignIn />} />
+        <Route path="/" element={<Preferences />} />
         <Route path="/preferences" element={<Preferences />} />
         <Route path="/meal-plan-v2" element={<MealPlanV2 />} />
         <Route path="/meal-plan/:day" element={<MealPlanDetailV2 />} /> {/* Updated route */}
