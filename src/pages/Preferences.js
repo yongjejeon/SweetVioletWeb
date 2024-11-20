@@ -25,8 +25,6 @@ const Preferences = () => {
 
   const navigate = useNavigate();
 
-  const handleGenerateMealPlan = () => {
-    navigate('/Question0');
   const handleGenerateMealPlan = async () => {
     setLoading(true); // Show loading while fetching data
 
@@ -68,8 +66,7 @@ const Preferences = () => {
     };
 
     await fetchMealPlans(); // Call the fetch function
-
-    navigate('/meal-plan-v2'); // Navigate after fetching the meal plan
+    navigate('/Question0'); // Navigate after fetching the meal plan
   };
 
   return (
