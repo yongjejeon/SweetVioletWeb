@@ -4,7 +4,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px; /* Reduced padding */
-    background-color: #6f2da8;
+    padding-top: 20px;
+    background-color: #706788;
     color: white;
     border-bottom: 1px solid #666; /* Reduced border thickness */
   }

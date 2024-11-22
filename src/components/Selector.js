@@ -28,7 +28,7 @@ const Selector = ({ options, onSelect, multiple = false }) => {
           style={{
             padding: '10px 15px',
             margin: '5px',
-            backgroundColor: selectedOptions.includes(option) ? '#333' : '#ccc',
+            backgroundColor: selectedOptions.includes(option) ? '#333' : '#f0f4f3',
             color: selectedOptions.includes(option) ? '#fff' : '#000',
             border: 'none',
             borderRadius: '5px',

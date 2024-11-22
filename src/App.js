@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Header from './components/Header';
 import SignInHeader from './components/SignInHeader';
 import Preferences from './pages/Preferences';
+import WelcomeScreen from './pages/WelcomScreen';
 import MealPlanDetailV2 from './pages/MealPlanDetailV2'; // Import the new MealPlanDetailV2
 import MealPlanV2 from './pages/MealPlanV2';
 import Question0 from './pages/Question0';
@@ -31,14 +32,15 @@ const AppContent = () => {
         <Header
           title="Sweet Violet"
           navItems={[
-            { label: 'Preferences', href: '/preferences' },
+            { label: 'WelcomeScreen', href: '/welcomescreen' },
             { label: 'Meal Plan V2', href: '/meal-plan-v2' },
           ]}
         />
       )}
       <Routes>
-        <Route path="/" element={<Preferences />} />
+        <Route path="/" element={<WelcomeScreen />} />
         <Route path="/preferences" element={<Preferences />} />
+        <Route path="/welcomescreen" element={<WelcomeScreen />} />
         <Route path="/Question0" element={<Question0/>} />
         <Route path="/Question1" element={<Question1/>} />
         <Route path="/Question2" element={<Question2/>} />
@@ -60,7 +62,9 @@ const App = () => {
   return (
     <AppProvider>
       <Router>
-        <AppContent /> {/* Place AppContent inside the Router */}
+        <div style={{ backgroundColor: '#f4f8f7', minHeight: '100vh' }}> {/* Set background color here */}
+          <AppContent /> {/* Place AppContent inside the Router */}
+        </div>
       </Router>
     </AppProvider>
   );

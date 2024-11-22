@@ -11,10 +11,14 @@ export const AppProvider = ({ children }) => {
   const [selectedGoal, setSelectedGoal] = useState(null);
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
+  const [dietaryRestriction, setDietaryRestriction] = useState('');
+  const [preferredCuisine, setPreferredCuisine] = useState('');
   const [Goals, setGoals] = useState('');
   const [mealData, setMealData] = useState(null);
   const [mealDetails, setMealDetails] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  
 
   return (
     <AppContext.Provider
@@ -27,6 +31,10 @@ export const AppProvider = ({ children }) => {
         setActivityLevel,
         weight,
         setWeight,
+        dietaryRestriction,
+        setDietaryRestriction,
+        preferredCuisine,
+        setPreferredCuisine,
         height,
         setHeight,
         mealData,

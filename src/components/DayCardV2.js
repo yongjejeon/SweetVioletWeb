@@ -33,11 +33,16 @@ const DayCard = ({ day, meals }) => {
   };
 
   // Function to get the meal type from the meal position (index)
-  const getMealType = (index) => {
-    if (index === 0) return 'Breakfast';
-    if (index === 1) return 'Lunch';
-    if (index === 2) return 'Dinner';
-    return 'Meal type not available';
+  const getMealType = (meal) => {
+    if (meal.type === 'breakfast'){
+      return ("Breakfast")
+    }
+    if (meal.type === 'lunch'){
+      return ("Lunch")
+    }
+    if (meal.type === 'dinner'){
+      return ("Dinner")
+    }
   };
 
   return (
@@ -52,7 +57,8 @@ const DayCard = ({ day, meals }) => {
         const dietLabels = meal?.diet_labels?.join(', ') || 'Diet labels not available';
 
         // Get meal type based on index (Breakfast, Lunch, or Dinner)
-        const mealType = getMealType(index);
+        const mealType = getMealType(meal);
+        console.log("this is the meal",meal)
 
         return (
           <div key={index}>

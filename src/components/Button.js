@@ -1,46 +1,45 @@
-// src/components/Button.js
 import React from 'react';
 
 const Button = ({ label, onClick, variant = 'primary', disabled = false }) => {
   const buttonStyles = {
     primary: {
-      backgroundColor: '#333',
+      backgroundColor: '#5a5a5a',
       color: '#fff',
-      padding: '10px 20px',
+      padding: '15px 20px', // Increased padding for height
       cursor: 'pointer',
       border: 'none',
-      borderRadius: '5px', // Rounded corners
-      width: '100%',
-      maxWidth: '250px', // Limit button width for centering
+      borderRadius: '8px', // Rounded corners
+      width: '100%', // Make button stretch to max width inside its container
+      maxWidth: '400px', // Limit the max width of the button
+      margin: '20px auto', // Center the button and give it some space above and below
       textAlign: 'center',
-      marginTop: '30px',
-      fontSize: '20px',
+      fontSize: '18px', // Adjusted font size for balance
     },
     secondary: {
       backgroundColor: '#fff',
       color: '#333',
-      padding: '10px 20px',
+      padding: '15px 20px', // Increased padding for height
       cursor: 'pointer',
       border: '1px solid #333',
-      borderRadius: '5px',
+      borderRadius: '8px',
       width: '100%',
-      maxWidth: '250px',
+      maxWidth: '400px', // Limit the max width of the button
+      margin: '20px auto',
       textAlign: 'center',
-      marginTop: '30px',
-      fontSize: '20px',
+      fontSize: '18px',
     },
     disabled: {
       backgroundColor: '#ccc',
       color: '#666',
-      padding: '10px 20px',
+      padding: '15px 20px',
       cursor: 'not-allowed',
       border: 'none',
-      borderRadius: '5px',
+      borderRadius: '8px',
       width: '100%',
-      maxWidth: '250px',
+      maxWidth: '400px',
+      margin: '20px auto',
       textAlign: 'center',
-      marginTop: '30px',
-      fontSize: '20px',
+      fontSize: '18px',
     }
   };
 
