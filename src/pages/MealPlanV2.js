@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../AppContext';
 import DayCard from '../components/DayCardV2';
@@ -14,6 +14,8 @@ const MealPlanV2 = () => {
     setMealDetails,
     loading,
     setLoading,
+    navigationFromQuestion8, // Track flag
+    setNavigationFromQuestion8,
     
   } = useAppContext();
   const { selectedMeals, selectedGoal, weight, height , activityLevel, dietaryRestriction, preferredCuisine, gender, Goals} = useAppContext();
@@ -29,6 +31,14 @@ const MealPlanV2 = () => {
     gender,
     Goals
   };
+
+  useEffect(() => {
+    // Only call fetchMealPlanTest if navigating from the Preferences page
+    if (navigationFromQuestion8) {
+      fetchMealPlanTest();
+      setNavigationFromQuestion8(false); // Reset flag after the function is called
+    }
+  }, [navigationFromQuestion8, setNavigationFromQuestion8]);
 
   const sampleData = {
     "meals": [

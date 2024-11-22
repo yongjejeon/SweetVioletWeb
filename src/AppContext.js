@@ -17,8 +17,9 @@ export const AppProvider = ({ children }) => {
   const [mealData, setMealData] = useState(null);
   const [mealDetails, setMealDetails] = useState([]);
   const [loading, setLoading] = useState(true);
-
   
+  // Add new state for tracking the navigation flag
+  const [navigationFromQuestion8, setNavigationFromQuestion8] = useState(false);
 
   return (
     <AppContext.Provider
@@ -47,6 +48,9 @@ export const AppProvider = ({ children }) => {
         Goals,
         setGoals,
         setLoading,
+        // Add navigation flag and its setter
+        navigationFromQuestion8,
+        setNavigationFromQuestion8,
       }}
     >
       {children}
