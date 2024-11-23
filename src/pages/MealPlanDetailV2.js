@@ -1,19 +1,26 @@
-// src/pages/MealPlanDetailV2.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../AppContext';
 import ArrowButton from '../components/ArrowButton';
 import './MealPlanDetailV2.css';
 
 const MealPlanDetailV2 = () => {
-  const { day } = useParams();
+  const { day } = useParams(); // Retrieve day from URL params
   const navigate = useNavigate();
-  const { mealDetails, loading } = useAppContext();
+  const { mealDetails, loading, preferredCuisine } = useAppContext(); // Access preferredCuisine
 
+  // Convert day to a number for comparison
   const dayIndex = parseInt(day, 10);
 
-  const dayData = mealDetails.find((data) => data.day === dayIndex);
+  // Log the chosen cuisine type on component load
+  useEffect(() => {
+    console.log('Cuisine chosen:', preferredCuisine);
+  }, [preferredCuisine]);
 
+  // Find the data for the specified day
+  const dayData = mealDetails?.find((data) => parseInt(data.day, 10) === dayIndex);
+
+  // Handlers for navigating between days
   const handlePreviousDay = () => {
     if (dayIndex > 1) navigate(`/meal-plan/${dayIndex - 1}`);
   };
@@ -22,6 +29,7 @@ const MealPlanDetailV2 = () => {
     if (dayIndex < 7) navigate(`/meal-plan/${dayIndex + 1}`);
   };
 
+  // Display loading or error messages
   if (loading) return <p>Loading...</p>;
   if (!dayData) return <p>Day data not found</p>;
 
@@ -63,11 +71,11 @@ const MealPlanDetailV2 = () => {
             </div>
           ))}
         </div>
-         </div>
-
-        {/* Right Arrow */}
-        <ArrowButton direction="right" onClick={handleNextDay} disabled={dayIndex === 7} />
       </div>
+
+      {/* Right Arrow Button */}
+      <ArrowButton direction="right" onClick={handleNextDay} disabled={dayIndex === 7} />
+    </div>
   );
 };
 
