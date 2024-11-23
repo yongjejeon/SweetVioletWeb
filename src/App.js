@@ -19,6 +19,9 @@ import Question8 from './pages/Question8';
 import SignIn from './pages/SignIn';
 import { AppProvider } from './AppContext';
 import HowToCook from './pages/HowToCook';
+import SummaryPage from './pages/SummaryPage'; 
+import PrintPage from './pages/PrintPage'; 
+
 
 const AppContent = () => {
   const location = useLocation();
@@ -34,6 +37,7 @@ const AppContent = () => {
           navItems={[
             { label: 'WelcomeScreen', href: '/welcomescreen' },
             { label: 'Meal Plan V2', href: '/meal-plan-v2' },
+            { label: 'Summary', href: '/summary' }
           ]}
         />
       )}
@@ -53,6 +57,8 @@ const AppContent = () => {
         <Route path="/meal-plan-v2" element={<MealPlanV2 />} />
         <Route path="/meal-plan/:day" element={<MealPlanDetailV2 />} /> {/* Updated route */}
         <Route path="/how-to-cook" element={<HowToCook />} />
+        <Route path="/summary" element={<SummaryPage />} />
+        <Route path="/print" element={<PrintPage />} />
       </Routes>
     </>
   );
