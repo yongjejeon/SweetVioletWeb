@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../AppContext';
 import ArrowButton from '../components/ArrowButton';
 import './MealPlanDetailV2.css';
-
+//test
 const MealPlanDetailV2 = () => {
   const { day } = useParams(); // Retrieve day from URL params
   const navigate = useNavigate();
