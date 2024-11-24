@@ -7,6 +7,7 @@ import Preferences from './pages/Preferences';
 import WelcomeScreen from './pages/WelcomScreen';
 import MealPlanDetailV2 from './pages/MealPlanDetailV2'; // Import the new MealPlanDetailV2
 import MealPlanV2 from './pages/MealPlanV2';
+import QuestionEmotion from './pages/QuestionEmotion';
 import Question0 from './pages/Question0';
 import Question1 from './pages/Question1';
 import Question2 from './pages/Question2';
@@ -45,6 +46,7 @@ const AppContent = () => {
         <Route path="/" element={<WelcomeScreen />} />
         <Route path="/preferences" element={<Preferences />} />
         <Route path="/welcomescreen" element={<WelcomeScreen />} />
+        <Route path="/QuestionEmotion" element={<QuestionEmotion />} />
         <Route path="/Question0" element={<Question0/>} />
         <Route path="/Question1" element={<Question1/>} />
         <Route path="/Question2" element={<Question2/>} />
