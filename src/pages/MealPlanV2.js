@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../AppContext';
 import DayCard from '../components/DayCardV2';
@@ -7,6 +7,11 @@ import ActionButtons from '../components/ActionButtons';
 import './MealPlan.css';
 
 const MealPlanV2 = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [explanation, setExplanation] = useState('');
+  const [isFetchingExplanation, setIsFetchingExplanation] = useState(false);
+  
   const {
     mealData,
     setMealData,
@@ -18,9 +23,11 @@ const MealPlanV2 = () => {
     setNavigationFromQuestion8,
     
   } = useAppContext();
-  const { selectedMeals, selectedGoal, weight, height , activityLevel, dietaryRestriction, preferredCuisine, gender, Goals} = useAppContext();
+  const { selectedEmotionGoal, selectedMood, selectedMeals, selectedGoal, weight, height , activityLevel, dietaryRestriction, preferredCuisine, gender, Goals} = useAppContext();
 
   const packaged_preferences = {
+    selectedEmotionGoal,
+    selectedMood,
     selectedMeals,
     selectedGoal,
     weight,
@@ -276,6 +283,42 @@ const MealPlanV2 = () => {
     console.log("Validated Meals:", validatedMeals);
     fetchMealPlans(validatedMeals); // Return the validated data
   };
+
+
+  const fetchExplanation = async () => {
+    setIsFetchingExplanation(true);
+    setIsModalOpen(true);
+    try {
+      const response = await fetch('http://localhost:8000/openai/explanations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          mealDetails,
+          selectedEmotionGoal,
+          selectedMood,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to fetch explanation');
+      }
+  
+      const data = await response.json(); // Parse JSON response
+      setExplanation(data.generalExplanation); // Use the generalExplanation field
+    } catch (error) {
+      console.error('Error fetching explanation:', error);
+      setExplanation('Failed to fetch explanation. Please try again.');
+    } finally {
+      setIsFetchingExplanation(false);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setExplanation('');
+  };
   
   
   const actionButtonsConfig = [
@@ -296,6 +339,11 @@ const MealPlanV2 = () => {
       },
       variant: 'primary',
     },
+    {
+      label: 'How this helps your mood',
+      onClick: fetchExplanation,
+      variant: 'primary',
+    }
   ];
 
   if (loading) {
@@ -319,8 +367,23 @@ const MealPlanV2 = () => {
       <div className="meal-plan-container">
         {nutrition.length > 0 && <NutritionCard nutritionData={nutrition} />}
       </div>
-
+      
       <ActionButtons buttons={actionButtonsConfig} />
+
+      {isModalOpen && (
+      <div>
+        <div>
+          <h2>How This Helps Your Mood</h2>
+          {isFetchingExplanation ? (
+            <p>Loading explanation...</p>
+          ) : (
+            <p>{explanation}</p> // Explanation displayed here
+          )}
+          <button onClick={closeModal}>Close</button>
+        </div>
+      </div>
+    )}
+
     </div>
   );
 };
