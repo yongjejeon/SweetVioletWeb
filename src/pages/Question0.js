@@ -13,6 +13,10 @@ const Question0 = () => {
     navigate('/Question1');
   };
 
+  const goToQuestionE = () => {
+    navigate('/QuestionEmotion');
+  };
+
   const data = [
     {
       title: 'What Is Your Sex?',
@@ -34,12 +38,19 @@ const Question0 = () => {
         </div>
       </div>
       
-      <Button
-        className="button"
-        label="Next"
-        onClick={goToQuestion1}
-        disabled={!gender}
-      />
+      <div style={buttonContainerStyle}>
+        <Button
+          className="button"
+          label="Prev"
+          onClick={goToQuestionE}
+        />
+        <Button
+          className="button"
+          label="Next"
+          onClick={goToQuestion1}
+          disabled={!gender}
+        />
+      </div>
     </div>
   );
 };
