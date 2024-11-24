@@ -6,7 +6,7 @@ const WelcomePage = () => {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/question0");
+    navigate("/QuestionEmotion");
   };
 
   return (
