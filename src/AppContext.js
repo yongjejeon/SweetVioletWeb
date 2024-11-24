@@ -20,6 +20,9 @@ export const AppProvider = ({ children }) => {
   
   // Add new state for tracking the navigation flag
   const [navigationFromQuestion8, setNavigationFromQuestion8] = useState(false);
+  
+  const [selectedEmotionGoal, setSelectedEmotionGoal] = useState('');
+  const [selectedMood, setSelectedMood] = useState('');
 
   return (
     <AppContext.Provider
@@ -51,6 +54,10 @@ export const AppProvider = ({ children }) => {
         // Add navigation flag and its setter
         navigationFromQuestion8,
         setNavigationFromQuestion8,
+        selectedEmotionGoal,
+        setSelectedEmotionGoal,
+        selectedMood,
+        setSelectedMood,
       }}
     >
       {children}
