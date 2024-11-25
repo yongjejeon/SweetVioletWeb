@@ -1,107 +1,185 @@
-/* src/pages/MealPlanDetail.css */
-
-/* .background-image-bar {
-  width: 100%;
-  height: 150px; 
-  background-image: url('../images/backgroundIMG1.jpg'); 
-  background-size: cover; 
-  background-repeat: no-repeat; 
-  background-position: center; 
-  position: relative; 
-  z-index: -1; 
-} */
+/* General styles for the meal plan */
 .meal-plan-detail {
-    padding: 20px;
-    position: relative; /* Enable positioning within this container */
-    text-align: center;
-  }
-  .meal-title{
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-size: 30px;
-  }
-  .meal-plan-content {
-    display: flex;
-    flex-direction: column;
+  padding: 0px;
+  position: relative;
+  text-align: center;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  height: 80vh; /* Ensure full screen height */
+  justify-content: flex-start; /* Position content from the top */
+}
 
-    position: relative;
-  }
-  
-  .meal-plan-columns {
-    display: flex;
-    /* justify-content: space-around; */
-    width: 80%; /* Adjust width to make space for arrows */
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-  
-  .meal-column {
-    width: 30%;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .nutrition-ingredients {
-    display: flex;
-    justify-content: space-between;
-    min-height: 50vh;
-    max-height: 50vh;
-    overflow-y: auto;
-    gap: 10px;
-  }
-  
-  .ingredient-Title{
-    text-align: center;
-  }
-  .nutrition {
-    width: 48%;
-    overflow-y: auto;
-    min-height: 50vh;
-    max-height: 50vh;
-    text-align: center;
-  }
-  .ingredients {
-    width: 48%;
-    overflow-y: auto;
-    min-height: 50vh;
-    max-height: 50vh;
-    padding-left: 5px; /* Add padding inside the container */
+.meal-plan-title {
+  font-size: 2rem;
+  color: #6A4C9C;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.background-image-bar {
+  width: 100%;
+  height: 150px;
+  background-image: url('../images/backgroundIMG1.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: -1;
+}
+
+.meal-plan-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1; /* Allow content to take full available height */
+  margin-top: 0px; /* Add a small margin to avoid touching the top */
+  padding-top: 0px; /* Add padding at the top for better spacing */
+  padding-bottom: 20px; /* Padding at the bottom to prevent content from sticking */
+}
+
+.meal-plan-columns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 20px; /* Adds space between columns */
+}
+
+.meal-column {
+  width: 320px; /* Fixed width for each card */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Allow the card to grow or shrink based on the content */
+}
+
+.meal-column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+/* Meal Header */
+.meal-header {
+  font-size: 1.5rem; /* Adjust font size if needed */
+  color: #6A4C9C;
+  font-weight: bold;
+  margin-bottom: 5px; /* Reduce the space between header and title */
+}
+
+/* Meal Title */
+.meal-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px; /* Reduce the bottom margin to close the gap */
+  text-align: center;
+  height: 5rem;
+  line-height: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 
-  
-  .arrow {
-    position: absolute; /* Make sure it's positioned relative to the webpage */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust to ensure it centers vertically */
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    z-index: 10;
-  }
-  
-  .arrow-left {
-    left: 50px; /* Position it to the left side of the page */
-    transform: translateY(-50%) scaleX(-1); /* Flip for left arrow */
-  }
-  
-  .arrow-right {
-    right: 50px; /* Position it to the right side of the page */
-    transform: translateY(-50%); /* No flipping needed */
-  }
-  .total-calories {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  
-  
+/* Tab System */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #f0f0f0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 10px;
+  border-radius: 8px;
+}
+
+.tab-button.active {
+  background-color: #6A4C9C;
+  color: white;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.tab-content {
+  text-align: left;
+}
+
+.nutrition h3, .ingredients h3 {
+  color: #6A4C9C;
+  font-weight: bold;
+}
+
+.nutrition-item, .ingredient-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  margin: 5px 0;
+}
+
+.nutrition-title, .ingredient-name {
+  font-weight: bold;
+  text-align: left;
+  flex: 1;
+}
+
+.nutrition-value, .ingredient-quantity {
+  color: #555;
+  text-align: right;
+  flex: 0 0 50%; /* This ensures the value is aligned to the right */
+}
+
+.divider {
+  border-bottom: 1px solid #ddd;
+}
+
+.nutrition {
+  display: block;
+}
+
+.ingredients {
+  display: block;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow-left {
+  left: 50px;
+  transform: translateY(-50%) scaleX(-1);
+}
+
+.arrow-right {
+  right: 50px;
+  transform: translateY(-50%);
+}
+
+.total-calories {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

@@ -10,6 +10,12 @@ const PrintPage = () => {
     window.print();
   }, []);
 
+  // Helper function to safely format prices
+  const formatPrice = (price) => {
+    const parsedPrice = parseFloat(price);
+    return isNaN(parsedPrice) ? 'N/A' : parsedPrice.toFixed(2);
+  };
+
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h2>Ingredient List</h2>
@@ -28,11 +34,13 @@ const PrintPage = () => {
       <ul>
         {ingredients.map((ingredient, index) => (
           <li key={index}>
-            {ingredient.name} - ${ingredient.price.toFixed(2)}
+            {ingredient.name} - ${formatPrice(ingredient.price)}
           </li>
         ))}
       </ul>
-      <p style={{ fontWeight: 'bold' }}>Total Price: ${totalPrice.toFixed(2)}</p>
+      <p style={{ fontWeight: 'bold' }}>
+        Total Price: ${formatPrice(totalPrice)}
+      </p>
     </div>
   );
 };

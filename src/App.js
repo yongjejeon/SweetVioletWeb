@@ -37,8 +37,7 @@ const AppContent = () => {
           title="Sweet Violet"
           navItems={[
             { label: 'WelcomeScreen', href: '/welcomescreen' },
-            { label: 'Meal Plan V2', href: '/meal-plan-v2' },
-            { label: 'Summary', href: '/summary' }
+            { label: 'Meal Plan', href: '/meal-plan-v2' },
           ]}
         />
       )}
@@ -70,7 +69,7 @@ const App = () => {
   return (
     <AppProvider>
       <Router>
-        <div style={{ backgroundColor: '#f4f8f7', minHeight: '100vh' }}> {/* Set background color here */}
+        <div style={{ backgroundColor: '#F9F9F9', minHeight: '100vh' }}> {/* Set background color here */}
           <AppContent /> {/* Place AppContent inside the Router */}
         </div>
       </Router>

@@ -24,36 +24,38 @@ const Question6 = () => {
   ];
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2 className="card-title">{data[0].title}</h2>
-        {/* Selector component for predefined dietary restrictions */}
-        <Selector
-          options={[
-            'Balanced',
-            'High-Fiber',
-            'High-Protein',
-            'Low-Carb',
-            'Low-Fat',
-            'Low-Sodium',
-          ]}
-          onSelect={setDietaryRestriction} // Update the context with selected value
-          selected={dietaryRestriction} // Current selection
-        />
-      </div>
+    <div className="page-wrapper"> {/* Wrap the content in a page-wrapper */}
+      <div className="container">
+        <div className="card">
+          <h2 className="card-title">{data[0].title}</h2>
+          {/* Selector component for predefined dietary restrictions */}
+          <Selector
+            options={[
+              'Balanced',
+              'High-Fiber',
+              'High-Protein',
+              'Low-Carb',
+              'Low-Fat',
+              'Low-Sodium',
+            ]}
+            onSelect={setDietaryRestriction} // Update the context with selected value
+            selected={dietaryRestriction} // Current selection
+          />
+        </div>
 
-      <div className="button-container">
-        <Button
-          className="button"
-          label="Prev"
-          onClick={goToQuestion5}
-        />
-        <Button
-          className="button"
-          label="Next"
-          onClick={goToQuestion7}
-          disabled={!dietaryRestriction} // Disable Next if nothing is selected
-        />
+        <div className="button-container">
+          <Button
+            className="button"
+            label="Prev"
+            onClick={goToQuestion5}
+          />
+          <Button
+            className="button"
+            label="Next"
+            onClick={goToQuestion7}
+            disabled={!dietaryRestriction} // Disable Next if nothing is selected
+          />
+        </div>
       </div>
     </div>
   );

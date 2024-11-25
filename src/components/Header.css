@@ -5,9 +5,8 @@
     align-items: center;
     padding: 10px; /* Reduced padding */
     padding-top: 20px;
-    background-color: #706788;
+    background-color: #9c8af0;
     color: white;
-    border-bottom: 1px solid #666; /* Reduced border thickness */
   }
   
   .header-title {

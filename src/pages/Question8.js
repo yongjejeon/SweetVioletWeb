@@ -34,30 +34,32 @@ const Question8 = () => {
   ];
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2 className="card-title">{data[0].title}</h2>
-        {/* Input field for Goals, type 'text' */}
-        <Input 
-          value={Goals} 
-          onChange={setGoals} 
-          placeholder="Enter your goals here..." 
-          type="text" // Set type to 'text' for goals
-        />
-      </div>
+    <div className="page-wrapper"> {/* Wrap in page-wrapper for centering */}
+      <div className="container">
+        <div className="card">
+          <h2 className="card-title">{data[0].title}</h2>
+          {/* Input field for Goals, type 'text' */}
+          <Input 
+            value={Goals} 
+            onChange={setGoals} 
+            placeholder="Enter your goals here..." 
+            type="text" // Set type to 'text' for goals
+          />
+        </div>
 
-      <div className="button-container">
-        <Button
-          className="button"
-          label="Prev"
-          onClick={goToQuestion7}
-        />
-        <Button
-          className="button"
-          label="Generate Meal"
-          onClick={handleGenerateMealPlan}
-          disabled={!Goals.trim()} // Disable if Goals is empty or just spaces
-        />
+        <div className="button-container">
+          <Button
+            className="button"
+            label="Prev"
+            onClick={goToQuestion7}
+          />
+          <Button
+            className="button"
+            label="Generate Meal"
+            onClick={handleGenerateMealPlan}
+            disabled={!Goals.trim()} // Disable if Goals is empty or just spaces
+          />
+        </div>
       </div>
     </div>
   );

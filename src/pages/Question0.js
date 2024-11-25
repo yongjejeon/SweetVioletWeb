@@ -24,34 +24,37 @@ const Question0 = () => {
   ];
 
   return (
-    <div className="container">
-      {/* Mimic the card for Selector */}
-      <div className="card">
-        <h2 className="card-title">{data[0].title}</h2>
-        {/* Add the Selector inside the styled box */}
-        <div>
-          <Selector
-            options={['Male', 'Female']}
-            onSelect={setGender}
-            multiple={false}
+    <div className='page-wrapper'>
+      <div className="container">
+        {/* Mimic the card for Selector */}
+        <div className="card">
+          <h2 className="card-title">{data[0].title}</h2>
+          {/* Add the Selector inside the styled box */}
+          <div>
+            <Selector
+              options={['Male', 'Female']}
+              onSelect={setGender}
+              multiple={false}
+            />
+          </div>
+        </div>
+        
+        <div style={buttonContainerStyle}>
+          <Button
+            className="button"
+            label="Prev"
+            onClick={goToQuestionE}
+          />
+          <Button
+            className="button"
+            label="Next"
+            onClick={goToQuestion1}
+            disabled={!gender}
           />
         </div>
       </div>
-      
-      <div style={buttonContainerStyle}>
-        <Button
-          className="button"
-          label="Prev"
-          onClick={goToQuestionE}
-        />
-        <Button
-          className="button"
-          label="Next"
-          onClick={goToQuestion1}
-          disabled={!gender}
-        />
-      </div>
     </div>
+    
   );
 };
 

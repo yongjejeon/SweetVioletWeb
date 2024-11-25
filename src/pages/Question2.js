@@ -24,29 +24,31 @@ const Question2 = () => {
   ];
 
   return (
-    <div className="container">
-      {/* Mimic the card for Selector */}
-      <div className="card">
-        <h2 className="card-title">{data[0].title}</h2>
-        {/* Add the Selector inside the styled box */}
-        <div>
-          <Selector
-            options={['Maintain', 'Bulk', 'Cut']}
-            onSelect={setSelectedGoal}
-            multiple={false}
+    <div className="page-wrapper">
+      <div className="container">
+        {/* Mimic the card for Selector */}
+        <div className="card">
+          <h2 className="card-title">{data[0].title}</h2>
+          {/* Add the Selector inside the styled box */}
+          <div>
+            <Selector
+              options={['Maintain', 'Bulk', 'Cut']}
+              onSelect={setSelectedGoal}
+              multiple={false}
+            />
+          </div>
+        </div>
+
+        {/* Button container to display Prev and Next buttons horizontally */}
+        <div className="button-container">
+          <Button className="button" label="Prev" onClick={goToQuestion1} />
+          <Button
+            className="button"
+            label="Next"
+            onClick={goToQuestion3}
+            disabled={!selectedGoal || selectedGoal.length === 0}
           />
         </div>
-      </div>
-
-      {/* Button container to display Prev and Next buttons horizontally */}
-      <div className="button-container">
-        <Button className="button" label="Prev" onClick={goToQuestion1} />
-        <Button
-          className="button"
-          label="Next"
-          onClick={goToQuestion3}
-          disabled={!selectedGoal || selectedGoal.length === 0}
-        />
       </div>
     </div>
   );

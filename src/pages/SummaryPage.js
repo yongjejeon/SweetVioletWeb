@@ -223,7 +223,7 @@ const SummaryPage = () => {
               return {
                 ...ingredient,
                 name: newName,
-                price: retailPrice,
+                price: parseFloat(retailPrice) || 0, // Ensure price is a number
                 greyedOut: false,
               };
             } catch (error) {
@@ -239,13 +239,14 @@ const SummaryPage = () => {
         })
       );
   
+      // Update the state with the parsed ingredients
       setIngredients(updatedIngredients);
       calculateTotalPrice(updatedIngredients);
     } catch (error) {
       console.error('Error fetching matches:', error);
       alert('Error fetching Trader Joe\'s ingredient matches.');
     }
-  };
+  };  
   
   
 
@@ -259,7 +260,7 @@ const SummaryPage = () => {
 
 
   return (
-    <div style={{ padding: '20px', display: 'flex', gap: '20px' }}>
+    <div style={{ padding: '20px', display: 'flex', gap: '20px', backgroundColor: '#F9F9F9'}}>
       {/* Left Section: Map */}
       <div style={{ flex: 2, backgroundColor: '#F9F9F9', borderRadius: '15px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', padding: '20px' }}>
         <h2 style={{ color: '#6A4C9C' }}>Trader Joe's Nearby</h2>
@@ -323,9 +324,11 @@ const SummaryPage = () => {
             >
               {capitalizeFirstLetter(ingredient.name)}
             </span>
+
             <span style={{ color: '#4A3070', fontWeight: 'bold' }}>
-              {ingredient.price ? `$${ingredient.price.toFixed(2)}` : ''}
+              {ingredient.price ? `$${parseFloat(ingredient.price).toFixed(2)}` : 'Price not available'}
             </span>
+
           </div>
         ))}
 

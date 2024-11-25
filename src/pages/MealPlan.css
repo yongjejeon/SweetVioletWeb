@@ -1,35 +1,60 @@
-/* src/pages/MealPlan.css */
-
 .meal-plan-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centers items horizontally */
-  justify-content: center; /* Centers items vertically */
-  padding-bottom: 15px;
+  padding: 20px;
 }
 
-.nutrition-overview {
+.meal-plan-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
+  margin-bottom: 20px;
+}
+
+.meal-plan-cards-container {
+  display: flex;
+  overflow-x: scroll;
+  margin-bottom: 20px;
   padding: 10px;
   border: 1px solid #ccc;
-  max-width: 500px; /* Optional: Set a max width for better alignment */
-  margin: 0 auto; /* Centers the NutritionCard within its container */
 }
 
-.nutrition-overview-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+.meal-plan-card {
+  cursor: pointer;
 }
 
-.nutrition-overview-content {
+.meal-plan-nutrition-container {
+  margin-top: 20px;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  gap: 15px;
   justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
   text-align: center;
-  
+  width: 80%;
+  max-width: 600px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #696cbc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4e56a1;
 }

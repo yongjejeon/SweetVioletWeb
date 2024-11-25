@@ -24,32 +24,34 @@ const Question4 = () => {
   ];
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2 className="card-title">{data[0].title}</h2>
-        <div>
-          <Input 
-            value={height} 
-            onChange={setHeight} 
-            placeholder="Enter your height (inches)" 
-            type="number" 
-            max={108} // Max height set to 108 inches (9 feet)
+    <div className="page-wrapper">
+      <div className="container">
+        <div className="card">
+          <h2 className="card-title">{data[0].title}</h2>
+          <div>
+            <Input 
+              value={height} 
+              onChange={setHeight} 
+              placeholder="Enter your height (inches)" 
+              type="number" 
+              max={108} // Max height set to 108 inches (9 feet)
+            />
+          </div>
+        </div>
+
+        <div className="button-container">
+          <Button
+            className="button"
+            label="Prev"
+            onClick={goToQuestion3}
+          />
+          <Button
+            className="button"
+            label="Next"
+            onClick={goToQuestion5}
+            disabled={!height}
           />
         </div>
-      </div>
-
-      <div className="button-container">
-        <Button
-          className="button"
-          label="Prev"
-          onClick={goToQuestion3}
-        />
-        <Button
-          className="button"
-          label="Next"
-          onClick={goToQuestion5}
-          disabled={!height}
-        />
       </div>
     </div>
   );

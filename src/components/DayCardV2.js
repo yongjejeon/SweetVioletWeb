@@ -1,80 +1,113 @@
 import React from 'react';
 
 const DayCard = ({ day, meals }) => {
-  // Styles for the DayCard component
+  // Day card styles
   const dayCardStyle = {
     width: '300px',
     marginRight: '20px',
     flexShrink: 0,
     padding: '20px',
     backgroundColor: '#f9f9f9',
-    borderRadius: '8px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    borderRadius: '15px',
+    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
     fontFamily: 'Arial, sans-serif',
+    display: 'flex', // Flexbox for vertical alignment
+    flexDirection: 'column', // Stack the content vertically
+    justifyContent: 'space-between', // Evenly distribute content
+    minHeight: '200px', // Fix the height to make the cards consistent
   };
 
   const titleStyle = {
-    fontSize: '1.5rem',
-    marginBottom: '15px',
-    color: '#333',
+    fontSize: '1.8rem',
+    marginBottom: '0px',
+    color: '#6A4C9C', // Purple accent for the title
+    fontWeight: 'bold',
   };
 
   const mealHeaderStyle = {
     fontSize: '1.2rem',
-    marginTop: '15px',
+    marginTop: '20px', // Increased margin for more space between meal types
     marginBottom: '8px',
+    color: '#4A3070', // Darker purple for meal headers
+    fontWeight: 'bold',
+    textAlign: 'left', // Ensure alignment with line items
+    margin: 0, // Remove default margin to avoid indentation
+    paddingLeft: '0', // Ensure no left padding for alignment
+  };
+
+  const detailRowStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '10px 0',
+    fontSize: '1rem',
     color: '#555',
   };
 
-  const mealDetailStyle = {
-    fontSize: '1rem',
-    color: '#666',
-    marginBottom: '5px',
+  const detailTitleStyle = {
+    fontWeight: 'bold',
+    color: '#6A4C9C', // Purple for the titles
   };
 
-  // Function to get the meal type from the meal position (index)
+  const detailValueStyle = {
+    textAlign: 'right',
+    color: '#333', // Neutral dark grey for values
+  };
+
+  const dividerStyle = {
+    height: '1px',
+    backgroundColor: '#e0e0e0',
+    margin: '5px 0',
+    border: 'none',
+  };
+
   const getMealType = (meal) => {
-    if (meal.type === 'breakfast'){
-      return ("Breakfast")
-    }
-    if (meal.type === 'lunch'){
-      return ("Lunch")
-    }
-    if (meal.type === 'dinner'){
-      return ("Dinner")
-    }
+    if (meal.type === 'breakfast') return 'Breakfast';
+    if (meal.type === 'lunch') return 'Lunch';
+    if (meal.type === 'dinner') return 'Dinner';
+    return 'Meal';
   };
 
   return (
     <div style={dayCardStyle}>
-      <h3 style={titleStyle}>{day}</h3>
+      <h3 style={titleStyle}>Day {day}</h3> {/* Changed to "Day {day}" */}
 
-      {/* Map through meals and dynamically add headers for meal types */}
+      {/* Map through meals and dynamically add meal headers and details */}
       {meals.map((meal, index) => {
         const recipeName = meal?.Recipe_Name || 'Recipe Name Not Available';
         const calories = meal?.calories ? `${Math.round(meal.calories)} kcal` : 'Calories not available';
         const cuisineType = meal?.cuisine_type || 'Cuisine type not available';
         const dietLabels = meal?.diet_labels?.join(', ') || 'Diet labels not available';
 
-        // Get meal type based on index (Breakfast, Lunch, or Dinner)
         const mealType = getMealType(meal);
-        console.log("this is the meal",meal)
 
         return (
           <div key={index}>
-            {/* Meal type header (based on index) */}
-            <h4 style={mealHeaderStyle}>{mealType}</h4>
-            <div style={mealDetailStyle}>
-              <strong>Recipe Name:</strong> {recipeName}
+            {/* Use div instead of h4 to avoid indentation */}
+            <div style={mealHeaderStyle}>{mealType}</div>
+
+            {/* Detail Rows */}
+            <div style={detailRowStyle}>
+              <span style={detailTitleStyle}>Recipe Name:</span>
+              <span style={detailValueStyle}>{recipeName}</span>
             </div>
-            <div style={mealDetailStyle}>
-              <strong>Calories:</strong> {calories}
+            <hr style={dividerStyle} />
+
+            <div style={detailRowStyle}>
+              <span style={detailTitleStyle}>Calories:</span>
+              <span style={detailValueStyle}>{calories}</span>
             </div>
-            <div style={mealDetailStyle}>
-              <strong>Cuisine Type:</strong> {cuisineType}
+            <hr style={dividerStyle} />
+
+            <div style={detailRowStyle}>
+              <span style={detailTitleStyle}>Cuisine Type:</span>
+              <span style={detailValueStyle}>{cuisineType}</span>
             </div>
-            <div style={mealDetailStyle}>
-              <strong>Diet Labels:</strong> {dietLabels}
+            <hr style={dividerStyle} />
+
+            <div style={detailRowStyle}>
+              <span style={detailTitleStyle}>Diet Labels:</span>
+              <span style={detailValueStyle}>{dietLabels}</span>
             </div>
           </div>
         );

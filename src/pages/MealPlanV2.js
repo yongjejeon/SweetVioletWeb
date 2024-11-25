@@ -47,33 +47,6 @@ const MealPlanV2 = () => {
     }
   }, [navigationFromQuestion8, setNavigationFromQuestion8]);
 
-  const sampleData = {
-    "meals": [
-      "6722e77934dd1384842ab3ca",  // Chicken Cacciatore "Trapizzino"
-      "6722e77b34dd1384842ab3ed",  // Pan-Fried Chicken and Mashed Potatoes
-      "6722e77a34dd1384842ab3dc",  // Cajun Shrimp Fried Rice
-      "6722e77534dd1384842ab33d",  // Maple-, Pecan-, and Bacon-Stuffed French Toast Recipe
-      "6722e77934dd1384842ab3b6",  // BBQ Pulled Pork Sandwich
-      "6722e77934dd1384842ab3b7",  // Ground Beef Quesadilla with Cheese recipes
-      "6722e77b34dd1384842ab3fe"   // Mixed Grain Veggie Burger
-    ],
-    "scheduledDates": [
-      {"day": "1", "lunch": "6722e77934dd1384842ab3ca"},  // Chicken Cacciatore "Trapizzino"
-      {"day": "2", "lunch": "6722e77b34dd1384842ab3ed"},  // Pan-Fried Chicken and Mashed Potatoes
-      {"day": "3", "lunch": "6722e77a34dd1384842ab3dc"},  // Cajun Shrimp Fried Rice
-      {"day": "4", "lunch": "6722e77534dd1384842ab33d"},  // Maple-, Pecan-, and Bacon-Stuffed French Toast Recipe
-      {"day": "5", "lunch": "6722e77934dd1384842ab3b6"},  // BBQ Pulled Pork Sandwich
-      {"day": "6", "lunch": "6722e77934dd1384842ab3b7"},  // Ground Beef Quesadilla with Cheese recipes
-      {"day": "7", "lunch": "6722e77b34dd1384842ab3fe"}   // Mixed Grain Veggie Burger
-    ],
-    "targetNutrition": {
-      "calories": 24415.52,  // Total calories for the week
-      "protein": 1580,  // Estimated protein intake (varies based on recipe)
-      "carbs": 4200,    // Estimated carbohydrate intake
-      "fat": 805        // Estimated fat intake
-    }
-  }
-
   const navigate = useNavigate();
 
   const nutrition = mealData?.targetNutrition
@@ -327,11 +300,7 @@ const MealPlanV2 = () => {
       onClick: () => navigate('/summary'),
       variant: 'primary',
     },
-    {
-      label: 'Cooking Instructions',
-      onClick: () => navigate('/how-to-cook'),
-      variant: 'primary',
-    },
+    
     {
       label: 'Regenerate Meal Plan',
       onClick: () => {
@@ -351,12 +320,12 @@ const MealPlanV2 = () => {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px'}}>
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <h1>Generated Meal Plan for the Week</h1>
+        <h1 style = {{color: '#6A4C9C'}}>Generated Meal Plan for the Week</h1>
       </div>
 
-      <div style={{ display: 'flex', overflowX: 'scroll', marginBottom: '20px', padding: '10px', border: '1px solid #ccc' }}>
+      <div style={{ display: 'flex', overflowX: 'scroll', marginBottom: '20px', padding: '10px' }}>
         {mealDetails?.map((dayData, index) => (
           <div key={index} style={{ cursor: 'pointer' }} onClick={() => handleDayClick(dayData.day)}>
             <DayCard day={dayData.day} meals={dayData.meals} />
