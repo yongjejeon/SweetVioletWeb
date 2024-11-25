@@ -1,38 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const DayCard = ({ day, meals }) => {
-  // Day card styles
+  const [isHovered, setIsHovered] = useState(false);
+
   const dayCardStyle = {
     width: '300px',
+    height: '800px', // Fixed height for consistency
     marginRight: '20px',
     flexShrink: 0,
     padding: '20px',
     backgroundColor: '#f9f9f9',
     borderRadius: '15px',
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+    boxShadow: isHovered
+      ? '0 8px 20px rgba(0, 0, 0, 0.2)'
+      : '0 4px 10px rgba(0, 0, 0, 0.1)',
     fontFamily: 'Arial, sans-serif',
-    display: 'flex', // Flexbox for vertical alignment
-    flexDirection: 'column', // Stack the content vertically
-    justifyContent: 'space-between', // Evenly distribute content
-    minHeight: '200px', // Fix the height to make the cards consistent
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    transform: isHovered ? 'translateY(-5px)' : 'translateY(0)',
+    overflow: 'hidden', // Hide overflowing content
   };
 
   const titleStyle = {
     fontSize: '1.8rem',
     marginBottom: '0px',
-    color: '#6A4C9C', // Purple accent for the title
+    color: '#6A4C9C',
     fontWeight: 'bold',
   };
 
   const mealHeaderStyle = {
     fontSize: '1.2rem',
-    marginTop: '20px', // Increased margin for more space between meal types
+    marginTop: '20px',
     marginBottom: '8px',
-    color: '#4A3070', // Darker purple for meal headers
+    color: '#4A3070',
     fontWeight: 'bold',
-    textAlign: 'left', // Ensure alignment with line items
-    margin: 0, // Remove default margin to avoid indentation
-    paddingLeft: '0', // Ensure no left padding for alignment
+    textAlign: 'left',
+    margin: 0,
+    paddingLeft: '0',
   };
 
   const detailRowStyle = {
@@ -46,12 +52,12 @@ const DayCard = ({ day, meals }) => {
 
   const detailTitleStyle = {
     fontWeight: 'bold',
-    color: '#6A4C9C', // Purple for the titles
+    color: '#6A4C9C',
   };
 
   const detailValueStyle = {
     textAlign: 'right',
-    color: '#333', // Neutral dark grey for values
+    color: '#333',
   };
 
   const dividerStyle = {
@@ -69,10 +75,13 @@ const DayCard = ({ day, meals }) => {
   };
 
   return (
-    <div style={dayCardStyle}>
-      <h3 style={titleStyle}>Day {day}</h3> {/* Changed to "Day {day}" */}
+    <div
+      style={dayCardStyle}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <h3 style={titleStyle}>Day {day}</h3>
 
-      {/* Map through meals and dynamically add meal headers and details */}
       {meals.map((meal, index) => {
         const recipeName = meal?.Recipe_Name || 'Recipe Name Not Available';
         const calories = meal?.calories ? `${Math.round(meal.calories)} kcal` : 'Calories not available';
@@ -83,10 +92,8 @@ const DayCard = ({ day, meals }) => {
 
         return (
           <div key={index}>
-            {/* Use div instead of h4 to avoid indentation */}
             <div style={mealHeaderStyle}>{mealType}</div>
 
-            {/* Detail Rows */}
             <div style={detailRowStyle}>
               <span style={detailTitleStyle}>Recipe Name:</span>
               <span style={detailValueStyle}>{recipeName}</span>

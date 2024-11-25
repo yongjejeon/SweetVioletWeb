@@ -345,8 +345,8 @@ const MealPlanV2 = () => {
 
   return (
     <div style={{ padding: '20px'}}>
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <h1 style = {{color: '#6A4C9C'}}>Generated Meal Plan for the Week</h1>
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px', fontSize:"22px" }}>
+        <h1 style = {{color: '#574284'}}>Generated Meal Plan for the Week</h1>
       </div>
 
       <div style={{ display: 'flex', overflowX: 'scroll', marginBottom: '20px', padding: '10px' }}>
