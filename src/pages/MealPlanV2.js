@@ -4,6 +4,7 @@ import { useAppContext } from '../AppContext';
 import DayCard from '../components/DayCardV2';
 import NutritionCard from '../components/NutritionCardV2';
 import ActionButtons from '../components/ActionButtons';
+import LoadingVideo from '../images/GeneratingMeal.mp4';
 import './MealPlan.css';
 
 const MealPlanV2 = () => {
@@ -316,7 +317,30 @@ const MealPlanV2 = () => {
   ];
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div
+        style={{
+          display: 'flex', // Flexbox for centering
+          justifyContent: 'center', // Center horizontally
+          alignItems: 'center', // Center vertically (optional)
+          height: '100vh', // Full height of the viewport for centering
+        }}
+      >
+        <video
+          style={{
+            width: '60%', // Adjust the size of the video
+            height: 'auto', // Maintain aspect ratio
+            objectFit: 'cover', // Ensures the video fits properly
+          }}
+          autoPlay
+          loop
+          muted
+        >
+          <source src={LoadingVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    );
   }
 
   return (
