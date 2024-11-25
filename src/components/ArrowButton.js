@@ -1,4 +1,3 @@
-// src/components/ArrowButton.js
 import React from 'react';
 import arrowRight from '../images/arrow-right.png';
 
@@ -9,13 +8,10 @@ const ArrowButton = ({ direction, onClick, disabled }) => {
     <img
       src={arrowRight}
       alt={`${direction} arrow`}
-      className={`arrow ${isLeft ? 'arrow-left' : 'arrow-right'}`}
+      className={`arrow ${isLeft ? 'arrow-left' : 'arrow-right'} ${
+        disabled ? 'disabled' : ''
+      }`}
       onClick={onClick}
-      style={{
-        cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity: disabled ? 0.5 : 1,
-        transform: isLeft ? 'scaleX(-1)' : 'none',
-      }}
     />
   );
 };

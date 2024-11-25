@@ -168,16 +168,25 @@
   height: 50px;
   cursor: pointer;
   z-index: 10;
+  transition: transform 0.2s ease /* Add transition for smooth animation */
 }
 
 .arrow-left {
   left: 50px;
-  transform: translateY(-50%) scaleX(-1);
+  transform: translateY(-50%) scaleX(-1); /* Always flipped */
 }
 
 .arrow-right {
   right: 50px;
   transform: translateY(-50%);
+}
+
+.arrow:hover {
+  transform: translateY(-50%) scale(1.2); /* Smoothly enlarge arrow on hover */
+}
+
+.arrow-left:hover {
+  transform: translateY(-50%) scaleX(-1) scale(1.2); /* Maintain flip and enlarge */
 }
 
 .total-calories {
