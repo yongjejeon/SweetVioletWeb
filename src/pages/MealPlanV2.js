@@ -315,22 +315,22 @@ const MealPlanV2 = () => {
       variant: 'primary',
     }
   ];
-
+  //loading animation
   if (loading) {
     return (
       <div
         style={{
-          display: 'flex', // Flexbox for centering
-          justifyContent: 'center', // Center horizontally
-          alignItems: 'center', // Center vertically (optional)
-          height: '100vh', // Full height of the viewport for centering
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: '100vh', 
         }}
       >
         <video
           style={{
-            width: '60%', // Adjust the size of the video
-            height: 'auto', // Maintain aspect ratio
-            objectFit: 'cover', // Ensures the video fits properly
+            width: '60%', 
+            height: 'auto', 
+            objectFit: 'cover', 
           }}
           autoPlay
           loop
