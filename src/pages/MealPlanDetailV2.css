@@ -1,20 +1,35 @@
 /* src/pages/MealPlanDetail.css */
 
+/* .background-image-bar {
+  width: 100%;
+  height: 150px; 
+  background-image: url('../images/backgroundIMG1.jpg'); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  position: relative; 
+  z-index: -1; 
+} */
 .meal-plan-detail {
     padding: 20px;
     position: relative; /* Enable positioning within this container */
+    text-align: center;
   }
-  
+  .meal-title{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 30px;
+  }
   .meal-plan-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+
     position: relative;
   }
   
   .meal-plan-columns {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     width: 80%; /* Adjust width to make space for arrows */
     margin: 0 auto;
     margin-top: 20px;
@@ -31,28 +46,62 @@
   .nutrition-ingredients {
     display: flex;
     justify-content: space-between;
-    max-height: 200px;
+    min-height: 50vh;
+    max-height: 50vh;
     overflow-y: auto;
     gap: 10px;
   }
   
-  .nutrition,
+  .ingredient-Title{
+    text-align: center;
+  }
+  .nutrition {
+    width: 48%;
+    overflow-y: auto;
+    min-height: 50vh;
+    max-height: 50vh;
+    text-align: center;
+  }
   .ingredients {
     width: 48%;
     overflow-y: auto;
-    max-height: 200px;
-  }
+    min-height: 50vh;
+    max-height: 50vh;
+    padding-left: 5px; /* Add padding inside the container */
+}
+
+
   
   .arrow {
-    left: -40px;
-    top: 50%;
-    transform: translateY(-50%) scaleX(-1);
-    width: 30px;
-    height: 30px;
+    position: absolute; /* Make sure it's positioned relative to the webpage */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust to ensure it centers vertically */
+    width: 50px;
+    height: 50px;
     cursor: pointer;
+    z-index: 10;
   }
   
   .arrow-left {
-    transform: scaleX(-1); /* Flip the left arrow */
+    left: 50px; /* Position it to the left side of the page */
+    transform: translateY(-50%) scaleX(-1); /* Flip for left arrow */
   }
+  
+  .arrow-right {
+    right: 50px; /* Position it to the right side of the page */
+    transform: translateY(-50%); /* No flipping needed */
+  }
+  .total-calories {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  
   
