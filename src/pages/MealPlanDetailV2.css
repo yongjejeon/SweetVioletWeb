@@ -12,10 +12,10 @@
 }
 
 .meal-plan-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #6A4C9C;
   font-weight: bold;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .background-image-bar {
@@ -58,9 +58,9 @@
   height: 100%; /* Allow the card to grow or shrink based on the content */
   min-height: 55vh;
   max-height: 55vh;
-  overflow-y: auto; /* Enable vertical scrolling */
-  scrollbar-width: thin; /* Firefox: Make the scrollbar thinner */
-  scrollbar-color: #ccc #f1f1f1; /* Firefox: Customize scrollbar colors */
+  overflow-y: auto; 
+  scrollbar-width: thin; 
+  scrollbar-color: #ccc #f1f1f1;
 }
 
 .meal-column:hover {
@@ -81,12 +81,13 @@
   color: #333;
   margin-bottom: 10px; /* Reduce the bottom margin to close the gap */
   text-align: center;
-  height: 5rem;
+  height: 3rem;
   line-height: 1.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 
@@ -94,7 +95,8 @@
 .tabs {
   display: flex;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-top: 35px;
+  margin-bottom: 35px;
 }
 
 .tab-button {
