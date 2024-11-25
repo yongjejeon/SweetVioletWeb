@@ -52,7 +52,7 @@ const DayCard = ({ day, meals }) => {
       {/* Map through meals and dynamically add headers for meal types */}
       {meals.map((meal, index) => {
         const recipeName = meal?.Recipe_Name || 'Recipe Name Not Available';
-        const calories = meal?.calories ? `${meal.calories} kcal` : 'Calories not available';
+        const calories = meal?.calories ? `${Math.round(meal.calories)} kcal` : 'Calories not available';
         const cuisineType = meal?.cuisine_type || 'Cuisine type not available';
         const dietLabels = meal?.diet_labels?.join(', ') || 'Diet labels not available';
 

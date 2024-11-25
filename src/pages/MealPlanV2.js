@@ -324,7 +324,7 @@ const MealPlanV2 = () => {
   const actionButtonsConfig = [
     {
       label: 'Generate Shopping List',
-      onClick: () => console.log('Generate Shopping List clicked'),
+      onClick: () => navigate('/summary'),
       variant: 'primary',
     },
     {
