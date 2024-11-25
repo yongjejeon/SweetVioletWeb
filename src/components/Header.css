@@ -13,21 +13,29 @@
     margin: 0;
     font-size: 1.5em; /* Reduced font size */
     color: white;
+    margin-bottom: 10px;
+    margin-left: 10px;
   }
   
   .nav-links {
     display: flex;
+    margin-right: 30px;
+    margin-bottom: 10px;
   }
   
   .nav-link {
     color: white;
     text-decoration: none;
-    margin-left: 15px; /* Reduced spacing between links */
-    font-size: 0.9em; /* Reduced font size for links */
+    margin-left: 30px; /* Reduced spacing between links */
+    font-size: 1em; /* Reduced font size for links */
   }
   
   .nav-link:hover {
-    text-decoration: underline;
+    text-decoration: none;
     color: #f0f0f0;
-  }
+    transform: scale(1.1); /* Slightly increase the size on hover */
+    transition: transform 0.2s ease, color 0.2s ease; /* Smooth animation */
+}
+
+  
   

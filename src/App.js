@@ -34,7 +34,7 @@ const AppContent = () => {
         <SignInHeader title="Sweet Violet" />
       ) : (
         <Header
-          title="Sweet Violet"
+          title="Mood Meals"
           navItems={[
             { label: 'WelcomeScreen', href: '/welcomescreen' },
             { label: 'Meal Plan', href: '/meal-plan-v2' },
