@@ -323,7 +323,7 @@ const MealPlanV2 = () => {
           display: 'flex', 
           justifyContent: 'center', 
           alignItems: 'center', 
-          height: '100vh', 
+          height: '90vh', 
         }}
       >
         <video
