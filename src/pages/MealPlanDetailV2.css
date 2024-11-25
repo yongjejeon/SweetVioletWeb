@@ -12,10 +12,10 @@
 }
 
 .meal-plan-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #6A4C9C;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .background-image-bar {
@@ -56,6 +56,11 @@
   display: flex;
   flex-direction: column;
   height: 100%; /* Allow the card to grow or shrink based on the content */
+  min-height: 55vh;
+  max-height: 55vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  scrollbar-width: thin; /* Firefox: Make the scrollbar thinner */
+  scrollbar-color: #ccc #f1f1f1; /* Firefox: Customize scrollbar colors */
 }
 
 .meal-column:hover {
