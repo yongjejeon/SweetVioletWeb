@@ -1,4 +1,3 @@
-// src/components/Selector.js
 import React, { useState } from 'react';
 
 const Selector = ({ options, onSelect, multiple = false }) => {
@@ -34,6 +33,16 @@ const Selector = ({ options, onSelect, multiple = false }) => {
             borderRadius: '5px',
             cursor: 'pointer',
             fontSize: '20px',
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            transform: selectedOptions.includes(option) ? 'scale(1.1)' : 'scale(1)', // Slightly enlarge selected
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = 'scale(1.1)';
+            e.target.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = selectedOptions.includes(option) ? 'scale(1.1)' : 'scale(1)';
+            e.target.style.boxShadow = 'none';
           }}
         >
           {option}

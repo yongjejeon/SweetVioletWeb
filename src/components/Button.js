@@ -1,32 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Button = ({ label, onClick, variant = 'primary', disabled = false }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const buttonStyles = {
     primary: {
       backgroundColor: '#5a5a5a',
       color: '#fff',
-      padding: '15px 20px', // Increased padding for height
+      padding: '15px 20px',
       cursor: 'pointer',
       border: 'none',
-      borderRadius: '8px', // Rounded corners
-      width: '100%', // Make button stretch to max width inside its container
-      maxWidth: '400px', // Limit the max width of the button
-      margin: '20px auto', // Center the button and give it some space above and below
+      borderRadius: '8px',
+      width: '100%',
+      maxWidth: '400px',
+      margin: '20px auto',
       textAlign: 'center',
-      fontSize: '18px', // Adjusted font size for balance
+      fontSize: '18px',
+      transition: 'transform 0.2s ease, background-color 0.2s ease',
+      transform: isHovered ? 'scale(1.1)' : 'scale(1)', // Scale effect on hover
     },
     secondary: {
       backgroundColor: '#fff',
       color: '#333',
-      padding: '15px 20px', // Increased padding for height
+      padding: '15px 20px',
       cursor: 'pointer',
       border: '1px solid #333',
       borderRadius: '8px',
       width: '100%',
-      maxWidth: '400px', // Limit the max width of the button
+      maxWidth: '400px',
       margin: '20px auto',
       textAlign: 'center',
       fontSize: '18px',
+      transition: 'transform 0.2s ease, background-color 0.2s ease',
+      transform: isHovered ? 'scale(1.1)' : 'scale(1)', // Scale effect on hover
     },
     disabled: {
       backgroundColor: '#ccc',
@@ -40,7 +46,7 @@ const Button = ({ label, onClick, variant = 'primary', disabled = false }) => {
       margin: '20px auto',
       textAlign: 'center',
       fontSize: '18px',
-    }
+    },
   };
 
   return (
@@ -54,6 +60,8 @@ const Button = ({ label, onClick, variant = 'primary', disabled = false }) => {
           : buttonStyles.secondary
       }
       disabled={disabled}
+      onMouseEnter={() => setIsHovered(true)} // Trigger hover effect
+      onMouseLeave={() => setIsHovered(false)} // Reset on mouse leave
     >
       {label}
     </button>
