@@ -32,12 +32,12 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
+    height: "90vh",
     backgroundColor: "#f8f8ff",
   },
   video: {
-    width: "80%",
-    maxWidth: "600px",
+    width: "100%",
+    maxWidth: "800px",
     borderRadius: "10px",
   },
   subText: {
