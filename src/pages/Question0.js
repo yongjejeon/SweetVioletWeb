@@ -56,3 +56,13 @@ const Question0 = () => {
 };
 
 export default Question0;
+
+// Styling for the button container to align buttons horizontally
+const buttonContainerStyle = {
+  display: 'flex', // Enable flexbox
+  justifyContent: 'flex-end', // Align buttons to the right
+  width: '100%', // Make buttons take up full width
+  maxWidth: '600px', // Limit max width to align with the card
+  marginTop: '20px', // Add some space between the card and buttons
+  gap: '20px', // Add gap between the buttons
+};
