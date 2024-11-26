@@ -298,7 +298,8 @@ const SummaryPage = () => {
       
 
       {/* Right Section: Ingredient List */}
-      <div style={{ flex: 1, padding: '20px', backgroundColor: '#F9F9F9', borderRadius: '15px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}>
+      <div style={{ flex: 1, padding: '20px', backgroundColor: '#F9F9F9', borderRadius: '15px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' , maxHeight: '800px', 
+               overflowY: 'auto', }}>
         <h3 style={{ color: '#6A4C9C' }}>Your Order Summary</h3>
         {ingredients.map((ingredient, index) => (
           <div
@@ -314,6 +315,7 @@ const SummaryPage = () => {
               marginBottom: '15px',
               boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
               cursor: 'pointer',
+               
             }}
           >
             <span
