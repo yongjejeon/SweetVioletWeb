@@ -49,16 +49,32 @@ const MealPlanV2 = () => {
   }, [navigationFromQuestion8, setNavigationFromQuestion8]);
 
   const navigate = useNavigate();
-
-  const nutrition = mealData?.targetNutrition
-    ? [
-        { label: 'Calories', value: mealData.targetNutrition.calories },
-        { label: 'Carbs (g)', value: mealData.targetNutrition.carbs },
-        { label: 'Protein (g)', value: mealData.targetNutrition.protein },
-        { label: 'Fat (g)', value: mealData.targetNutrition.fat },
-      ]
-    : [];
-
+  
+    const calculateNutrition = () => {
+      let totalCalories = 0;
+      let totalCarbs = 0;
+      let totalProtein = 0;
+      let totalFat = 0;
+    
+      mealDetails?.forEach((dayData) => {
+        dayData.meals.forEach((meal) => {
+          totalCalories += meal.calories || 0;
+          totalCarbs += meal.nutrients?.CHOCDF || 0; // Carbs
+          totalProtein += meal.nutrients?.PROCNT || 0; // Protein
+          totalFat += meal.nutrients?.FAT || 0; // Fat
+        });
+      });
+    
+      return [
+        { label: 'Calories', value: totalCalories.toFixed(2) },
+        { label: 'Carbs (g)', value: totalCarbs.toFixed(2) },
+        { label: 'Protein (g)', value: totalProtein.toFixed(2) },
+        { label: 'Fat (g)', value: totalFat.toFixed(2) },
+      ];
+    };
+    
+    const nutrition = calculateNutrition();
+    
   const fetchMealPlans = async (data) => {
     setLoading(true); // Show loading while fetching data
     console.log(data)
