@@ -274,7 +274,16 @@ const MealPlanV2 = () => {
     fetchMealPlans(validatedMeals); // Return the validated data
   };
 
-
+  const formatExplanation = (text) => {
+    // Replace list markers (e.g., "1. ") with <strong> tags and line breaks
+    const formattedText = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Replace **bold** with <strong> tags
+      .replace(/(\d+\.\s)/g, '<br/><strong>$1</strong>'); // Format numbered list markers
+    return formattedText.split('<br>').map((segment, index) => `<p key=${index}>${segment.trim()}</p>`).join('');
+  };
+  
+  
+  
   const fetchExplanation = async () => {
     setIsFetchingExplanation(true);
     setIsModalOpen(true);
@@ -296,14 +305,16 @@ const MealPlanV2 = () => {
       }
   
       const data = await response.json(); // Parse JSON response
-      setExplanation(data.generalExplanation); // Use the generalExplanation field
+      const formattedExplanation = formatExplanation(data.generalExplanation); // Format explanation
+      setExplanation(formattedExplanation); // Set the formatted explanation as HTML
     } catch (error) {
       console.error('Error fetching explanation:', error);
-      setExplanation('Failed to fetch explanation. Please try again.');
+      setExplanation('<p>Failed to fetch explanation. Please try again.</p>');
     } finally {
       setIsFetchingExplanation(false);
     }
   };
+  
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -380,18 +391,52 @@ const MealPlanV2 = () => {
       <ActionButtons buttons={actionButtonsConfig} />
 
       {isModalOpen && (
-      <div>
-        <div>
-          <h2>How This Helps Your Mood</h2>
-          {isFetchingExplanation ? (
-            <p>Loading explanation...</p>
-          ) : (
-            <p>{explanation}</p> // Explanation displayed here
-          )}
-          <button onClick={closeModal}>Close</button>
-        </div>
-      </div>
-    )}
+  <div
+    style={{
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+      width: '80%',
+      maxWidth: '600px',
+      padding: '20px',
+      zIndex: 1000,
+    }}
+  >
+    <h2 style={{ textAlign: 'center', color: '#574284', marginBottom: '20px' }}>How This Helps Your Mood</h2>
+    <div
+      style={{
+        textAlign: 'center',
+        fontSize: '16px',
+        color: '#666',
+        lineHeight: '1.6',
+      }}
+      dangerouslySetInnerHTML={{ __html: explanation }}
+    ></div>
+    <button
+      onClick={closeModal}
+      style={{
+        display: 'block',
+        margin: '20px auto 0',
+        padding: '10px 20px',
+        backgroundColor: '#574284',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        fontSize: '16px',
+        fontWeight: 'bold',
+      }}
+    >
+      Close
+    </button>
+  </div>
+)}
+
+
 
     </div>
   );
