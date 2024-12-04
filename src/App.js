@@ -31,7 +31,7 @@ const AppContent = () => {
     <>
       {/* Conditionally render headers based on the route */}
       {location.pathname === '/' ? (
-        <SignInHeader title="Sweet Violet" />
+        <SignInHeader title="Mood Meals" />
       ) : (
         <Header
           title="Mood Meals"
