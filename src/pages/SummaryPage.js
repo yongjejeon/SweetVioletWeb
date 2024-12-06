@@ -24,6 +24,7 @@ const SummaryPage = () => {
   const [ingredients, setIngredients] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
+
   // Load the Google Maps API
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
