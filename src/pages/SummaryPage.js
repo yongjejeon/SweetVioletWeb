@@ -102,8 +102,8 @@ const SummaryPage = () => {
       ? {
           name: selectedStore.name,
           vicinity: selectedStore.vicinity,
-          lat: selectedStore.geometry.location.lat(),
-          lng: selectedStore.geometry.location.lng(),
+          lat: selectedStore.location?.lat?.() || null,
+          lng: selectedStore.location?.lng?.() || null,
         }
       : null;
 
