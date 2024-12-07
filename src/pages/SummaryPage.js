@@ -20,6 +20,7 @@ const SummaryPage = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const mapRef = useRef(null);
   const navigate = useNavigate();
+  const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app' 
 
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -131,7 +132,7 @@ const SummaryPage = () => {
     const ingredientNames = ingredients.map((ingredient) => ingredient.name);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/get-matches', {
+      const response = await fetch(`${API_URL}/get-matches`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -154,7 +155,7 @@ const SummaryPage = () => {
           } else {
             try {
               const searchResponse = await fetch(
-                `http://127.0.0.1:8000/items/search/?item_title=${encodeURIComponent(
+                `${API_URL}/items/search/?item_title=${encodeURIComponent(
                   newName
                 )}`,
                 { method: 'GET' }

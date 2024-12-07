@@ -12,6 +12,7 @@ const MealPlanV2 = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [explanation, setExplanation] = useState('');
   const [isFetchingExplanation, setIsFetchingExplanation] = useState(false);
+  const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app'
   
   const {
     mealData,
@@ -97,7 +98,7 @@ const MealPlanV2 = () => {
           for (const mealType of ['breakfast', 'lunch', 'dinner']) {
             const mealId = dayData[mealType];
             if (mealId) {
-              const mealResponse = await fetch(`http://localhost:8000/recipes/${mealId}`);
+              const mealResponse = await fetch(`${API_URL}/recipes/${mealId}`);
               const mealData = await mealResponse.json();
               mealsForDay.push({ type: mealType, ...mealData });
             }
@@ -119,8 +120,7 @@ const MealPlanV2 = () => {
   const fetchMealPlanTest = async (params = {}) => {
     const serializedPreferences = encodeURIComponent(JSON.stringify(packaged_preferences));
 
-    const baseUrl = `http://127.0.0.1:8000/recipes/random/${serializedPreferences}/`;
-  
+    const baseUrl = `${API_URL}/recipes/random/${serializedPreferences}/`;
     // Construct the query string from params
     const queryString = new URLSearchParams(params).toString();
   
@@ -176,7 +176,7 @@ const MealPlanV2 = () => {
       if ("breakfast" in schedule) {
         const breakfastId = schedule.breakfast;
         try {
-          const mealData = await fetch(`http://localhost:8000/recipes/${breakfastId}`);
+          const mealData = await fetch(`${API_URL}/recipes/${breakfastId}`);
           if (!mealData.ok) {
             throw new Error(`Invalid breakfast meal ID for day ${day}`);
           }
@@ -187,7 +187,7 @@ const MealPlanV2 = () => {
         } catch (error) {
           console.error(`Day ${day} - Error fetching specific breakfast meal:`, error);
           try {
-            const allBreakfastsData = await fetch(`http://localhost:8000/recipes/filter/?meal_type=breakfast`);
+            const allBreakfastsData = await fetch(`${API_URL}/recipes/filter/?meal_type=breakfast`);
             if (!allBreakfastsData.ok) {
               throw new Error(`Failed to fetch all breakfast meals for day ${day}`);
             }
@@ -206,7 +206,7 @@ const MealPlanV2 = () => {
       if ("lunch" in schedule) {
         const lunchId = schedule.lunch;
         try {
-          const mealData = await fetch(`http://localhost:8000/recipes/${lunchId}`);
+          const mealData = await fetch(`${API_URL}/recipes/${lunchId}`);
           if (!mealData.ok) {
             throw new Error(`Invalid lunch meal ID for day ${day}`);
           }
@@ -217,7 +217,7 @@ const MealPlanV2 = () => {
         } catch (error) {
           console.error(`Day ${day} - Error fetching specific lunch meal:`, error);
           try {
-            const allLunchesData = await fetch(`http://localhost:8000/recipes/filter/?meal_type=lunch/dinner`);
+            const allLunchesData = await fetch(`${API_URL}/recipes/filter/?meal_type=lunch/dinner`);
             if (!allLunchesData.ok) {
               throw new Error(`Failed to fetch all lunch meals for day ${day}`);
             }
@@ -236,7 +236,7 @@ const MealPlanV2 = () => {
       if ("dinner" in schedule) {
         const dinnerId = schedule.dinner;
         try {
-          const mealData = await fetch(`http://localhost:8000/recipes/${dinnerId}`);
+          const mealData = await fetch(`${API_URL}/recipes/${dinnerId}`);
           if (!mealData.ok) {
             throw new Error(`Invalid dinner meal ID for day ${day}`);
           }
@@ -247,7 +247,7 @@ const MealPlanV2 = () => {
         } catch (error) {
           console.error(`Day ${day} - Error fetching specific dinner meal:`, error);
           try {
-            const allDinnersData = await fetch(`http://localhost:8000/recipes/filter/?meal_type=lunch/dinner`);
+            const allDinnersData = await fetch(`${API_URL}/recipes/filter/?meal_type=lunch/dinner`);
             if (!allDinnersData.ok) {
               throw new Error(`Failed to fetch all dinner meals for day ${day}`);
             }
@@ -288,7 +288,7 @@ const MealPlanV2 = () => {
     setIsFetchingExplanation(true);
     setIsModalOpen(true);
     try {
-      const response = await fetch('http://localhost:8000/openai/explanations', {
+      const response = await fetch(`${API_URL}/openai/explanations`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

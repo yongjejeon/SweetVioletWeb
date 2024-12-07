@@ -23,6 +23,7 @@ const Preferences = () => {
     setLoading,
   } = useContext(AppContext);
 
+  const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app'
   const navigate = useNavigate();
 
   const handleGenerateMealPlan = async () => {
@@ -30,7 +31,7 @@ const Preferences = () => {
 
     const fetchMealPlans = async () => {
       try {
-        const response = await fetch('http://localhost:8000/meal_plans/');
+        const response = await fetch(`${API_URL}/meal_plans/`);
         if (!response.ok) throw new Error('Failed to fetch meal plans');
         const data = await response.json();
         const randomMealPlan = data[Math.floor(Math.random() * data.length)];
@@ -51,7 +52,7 @@ const Preferences = () => {
             for (const mealType of ['breakfast', 'lunch', 'dinner']) {
               const mealId = dayData[mealType];
               if (mealId) {
-                const mealResponse = await fetch(`http://localhost:8000/recipes/${mealId}`);
+                const mealResponse = await fetch(`${API_URL}/recipes/${mealId}`);
                 const mealData = await mealResponse.json();
                 mealsForDay.push({ type: mealType, ...mealData });
               }
