@@ -40,10 +40,15 @@ const SummaryPage = () => {
     fetchGoogleMapsApiKey();
   }, []);
 
-  const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey,
-    libraries,
-  });
+  const { isLoaded, loadError } = useJsApiLoader(
+    googleMapsApiKey
+      ? {
+          googleMapsApiKey,
+          libraries,
+        }
+      : undefined
+  );
+  
 
   // Handle map load
   const handleLoad = useCallback((map) => {
