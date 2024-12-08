@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const AppContext = createContext();
 
@@ -17,38 +17,16 @@ export const AppProvider = ({ children }) => {
   const [mealData, setMealData] = useState(null);
   const [mealDetails, setMealDetails] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Add new state for tracking the navigation flag
   const [navigationFromQuestion8, setNavigationFromQuestion8] = useState(false);
+
   const [selectedEmotionGoal, setSelectedEmotionGoal] = useState('');
   const [selectedMood, setSelectedMood] = useState('');
 
-  // State for Google Maps API key
-  const [googleMapsApiKey, setGoogleMapsApiKey] = useState('');
-  const [isGoogleMapsKeyLoading, setIsGoogleMapsKeyLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchGoogleMapsApiKey = async () => {
-      try {
-        const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app'; // Hard-coded URL
-        console.log(API_URL)
-        setIsGoogleMapsKeyLoading(true);
-        const response = await fetch(`${API_URL}/api/google-maps-key/`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch Google Maps API key');
-        }
-        const data = await response.json();
-        console.log('Fetched API Key Response:', data);
-        console.log('Actual API Key:', data.googleMapsApiKey);
-        setGoogleMapsApiKey(data.googleMapsApiKey);
-      } catch (error) {
-        console.error('Error fetching Google Maps API key:', error);
-      } finally {
-        setIsGoogleMapsKeyLoading(false);
-      }
-    };
-  
-    fetchGoogleMapsApiKey();
-  }, []);
-  
+  // Hard-code the Google Maps API key for testing
+  const [googleMapsApiKey, setGoogleMapsApiKey] = useState('AIzaSyAE0FXObLgzofEz9rC3BorDKey3MW6wW9A');
+  const [isGoogleMapsKeyLoading, setIsGoogleMapsKeyLoading] = useState(false);
 
   return (
     <AppContext.Provider
@@ -83,6 +61,7 @@ export const AppProvider = ({ children }) => {
         setSelectedEmotionGoal,
         selectedMood,
         setSelectedMood,
+        // Add Google Maps API key and loading state
         googleMapsApiKey,
         isGoogleMapsKeyLoading,
       }}
