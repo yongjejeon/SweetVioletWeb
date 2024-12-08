@@ -17,30 +17,45 @@ export const AppProvider = ({ children }) => {
   const [mealData, setMealData] = useState(null);
   const [mealDetails, setMealDetails] = useState([]);
   const [loading, setLoading] = useState(true);
-  
-  // Add new state for tracking the navigation flag
   const [navigationFromQuestion8, setNavigationFromQuestion8] = useState(false);
-  
   const [selectedEmotionGoal, setSelectedEmotionGoal] = useState('');
   const [selectedMood, setSelectedMood] = useState('');
 
-  // New state for Google Maps API key
+  // State for Google Maps API key
   const [googleMapsApiKey, setGoogleMapsApiKey] = useState('');
   const [isGoogleMapsKeyLoading, setIsGoogleMapsKeyLoading] = useState(true);
 
-  // Set the Google Maps API key from environment variables
-  useEffect(() => {
-    setIsGoogleMapsKeyLoading(true);
-    const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-    
-    if (apiKey) {
-      setGoogleMapsApiKey(apiKey);
-      console.log('Google Maps API Key:', apiKey);
-    } else {
-      console.error('Google Maps API Key not found in environment variables.');
-    }
+  // Ensure the endpoint is using HTTPS and secure
+  const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app'; // Should be served over HTTPS
 
-    setIsGoogleMapsKeyLoading(false);
+  useEffect(() => {
+    const fetchGoogleMapsApiKey = async () => {
+      try {
+        setIsGoogleMapsKeyLoading(true);
+        const response = await fetch(`${API_URL}/api/google-maps-key/`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch Google Maps API key');
+        }
+
+        const data = await response.json();
+        console.log('Fetched API Key Response:', data);
+        console.log('Actual API Key:', data.googleMapsApiKey);
+
+        setGoogleMapsApiKey(data.googleMapsApiKey);
+      } catch (error) {
+        console.error('Error fetching Google Maps API key:', error);
+      } finally {
+        setIsGoogleMapsKeyLoading(false);
+      }
+    };
+
+    fetchGoogleMapsApiKey();
   }, []);
 
   return (
@@ -76,7 +91,6 @@ export const AppProvider = ({ children }) => {
         setSelectedEmotionGoal,
         selectedMood,
         setSelectedMood,
-        // Add Google Maps API key and loading state
         googleMapsApiKey,
         isGoogleMapsKeyLoading,
       }}
