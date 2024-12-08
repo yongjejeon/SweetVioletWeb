@@ -25,28 +25,19 @@ export const AppProvider = ({ children }) => {
   const [googleMapsApiKey, setGoogleMapsApiKey] = useState('');
   const [isGoogleMapsKeyLoading, setIsGoogleMapsKeyLoading] = useState(true);
 
-  // Ensure the endpoint is using HTTPS and secure
-  const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app'; // Should be served over HTTPS
-
   useEffect(() => {
     const fetchGoogleMapsApiKey = async () => {
       try {
+        const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app'; // Hard-coded URL
+        console.log(API_URL)
         setIsGoogleMapsKeyLoading(true);
-        const response = await fetch(`${API_URL}/api/google-maps-key/`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
+        const response = await fetch(`${API_URL}/api/google-maps-key/`);
         if (!response.ok) {
           throw new Error('Failed to fetch Google Maps API key');
         }
-
         const data = await response.json();
         console.log('Fetched API Key Response:', data);
         console.log('Actual API Key:', data.googleMapsApiKey);
-
         setGoogleMapsApiKey(data.googleMapsApiKey);
       } catch (error) {
         console.error('Error fetching Google Maps API key:', error);
@@ -54,9 +45,10 @@ export const AppProvider = ({ children }) => {
         setIsGoogleMapsKeyLoading(false);
       }
     };
-
+  
     fetchGoogleMapsApiKey();
   }, []);
+  
 
   return (
     <AppContext.Provider
