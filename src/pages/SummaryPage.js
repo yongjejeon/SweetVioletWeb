@@ -22,7 +22,7 @@ const SummaryPage = () => {
   const mapRef = useRef(null);
   const navigate = useNavigate();
   const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app';
-
+  
   useEffect(() => {
     const fetchGoogleMapsApiKey = async () => {
       try {
