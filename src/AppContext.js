@@ -37,7 +37,7 @@ export const AppProvider = ({ children }) => {
         setIsGoogleMapsKeyLoading(true);
         const response = await fetch(`${API_URL}/api/google-maps-key/`);
         if (!response.ok) {
-          throw new Error('Failed to fetch Google Maps API key');
+          throw new Error('Failed to fetch Google Maps API key', error.message);
         }
         const data = await response.json();
         

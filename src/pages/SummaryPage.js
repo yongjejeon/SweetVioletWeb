@@ -255,7 +255,7 @@ const SummaryPage = () => {
           {userLocation && (
             <Marker
               position={userLocation}
-              icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+              icon="https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
               title="Your Location"
             />
           )}
@@ -267,8 +267,8 @@ const SummaryPage = () => {
               onClick={() => handleStoreClick(store)}
               icon={
                 selectedStore?.placeId === store.placeId
-                  ? 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-                  : 'http://maps.google.com/mapfiles/kml/shapes/shopping.png'
+                  ? 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                  : 'https://maps.google.com/mapfiles/kml/shapes/shopping.png'
               }
             />
           ))}
