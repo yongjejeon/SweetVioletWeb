@@ -18,12 +18,30 @@ const SummaryPage = () => {
   const [userLocation, setUserLocation] = useState(null);
   const [ingredients, setIngredients] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [googleMapsApiKey, setGoogleMapsApiKey] = useState('');
   const mapRef = useRef(null);
   const navigate = useNavigate();
-  const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app' 
+  const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app';
+
+  useEffect(() => {
+    const fetchGoogleMapsApiKey = async () => {
+      try {
+        const response = await fetch(`${API_URL}/api/google-maps-key`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch Google Maps API key');
+        }
+        const data = await response.json();
+        setGoogleMapsApiKey(data.apiKey);
+      } catch (error) {
+        console.error('Error fetching Google Maps API key:', error);
+      }
+    };
+
+    fetchGoogleMapsApiKey();
+  }, []);
 
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey,
     libraries,
   });
 
