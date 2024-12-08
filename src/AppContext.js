@@ -28,34 +28,19 @@ export const AppProvider = ({ children }) => {
   const [googleMapsApiKey, setGoogleMapsApiKey] = useState('');
   const [isGoogleMapsKeyLoading, setIsGoogleMapsKeyLoading] = useState(true);
 
-  // API URL for fetching Google Maps key
-  const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app';
-
+  // Set the Google Maps API key from environment variables
   useEffect(() => {
-    const fetchGoogleMapsApiKey = async () => {
-      try {
-        setIsGoogleMapsKeyLoading(true);
-        const response = await fetch(`${API_URL}/api/google-maps-key/`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch Google Maps API key', Error.message);
-        }
-        const data = await response.json();
-        
-        // Add more detailed logging
-        console.log('Fetched API Key Response:', data);
-        console.log('Actual API Key:', data.googleMapsApiKey);
-  
-        setGoogleMapsApiKey(data.googleMapsApiKey);
-      } catch (error) {
-        console.error('Error fetching Google Maps API key:', error);
-      } finally {
-        setGoogleMapsApiKey('AIzaSyAE0FXObLgzofEz9rC3BorDKey3MW6wW9A');
-        console.log(googleMapsApiKey)
-        setIsGoogleMapsKeyLoading(false);
-      }
-    };
-  
-    fetchGoogleMapsApiKey();
+    setIsGoogleMapsKeyLoading(true);
+    const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+    
+    if (apiKey) {
+      setGoogleMapsApiKey(apiKey);
+      console.log('Google Maps API Key:', apiKey);
+    } else {
+      console.error('Google Maps API Key not found in environment variables.');
+    }
+
+    setIsGoogleMapsKeyLoading(false);
   }, []);
 
   return (
