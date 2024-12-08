@@ -49,6 +49,8 @@ export const AppProvider = ({ children }) => {
       } catch (error) {
         console.error('Error fetching Google Maps API key:', error);
       } finally {
+        setGoogleMapsApiKey('AIzaSyAE0FXObLgzofEz9rC3BorDKey3MW6wW9A');
+        console.log(googleMapsApiKey)
         setIsGoogleMapsKeyLoading(false);
       }
     };
