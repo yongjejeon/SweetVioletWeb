@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AppContext = createContext();
 
@@ -23,6 +23,38 @@ export const AppProvider = ({ children }) => {
   
   const [selectedEmotionGoal, setSelectedEmotionGoal] = useState('');
   const [selectedMood, setSelectedMood] = useState('');
+
+  // New state for Google Maps API key
+  const [googleMapsApiKey, setGoogleMapsApiKey] = useState('');
+  const [isGoogleMapsKeyLoading, setIsGoogleMapsKeyLoading] = useState(true);
+
+  // API URL for fetching Google Maps key
+  const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app';
+
+  useEffect(() => {
+    const fetchGoogleMapsApiKey = async () => {
+      try {
+        setIsGoogleMapsKeyLoading(true);
+        const response = await fetch(`${API_URL}/api/google-maps-key/`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch Google Maps API key');
+        }
+        const data = await response.json();
+        
+        // Add more detailed logging
+        console.log('Fetched API Key Response:', data);
+        console.log('Actual API Key:', data.googleMapsApiKey);
+  
+        setGoogleMapsApiKey(data.googleMapsApiKey);
+      } catch (error) {
+        console.error('Error fetching Google Maps API key:', error);
+      } finally {
+        setIsGoogleMapsKeyLoading(false);
+      }
+    };
+  
+    fetchGoogleMapsApiKey();
+  }, []);
 
   return (
     <AppContext.Provider
@@ -51,13 +83,15 @@ export const AppProvider = ({ children }) => {
         Goals,
         setGoals,
         setLoading,
-        // Add navigation flag and its setter
         navigationFromQuestion8,
         setNavigationFromQuestion8,
         selectedEmotionGoal,
         setSelectedEmotionGoal,
         selectedMood,
         setSelectedMood,
+        // Add Google Maps API key and loading state
+        googleMapsApiKey,
+        isGoogleMapsKeyLoading,
       }}
     >
       {children}
@@ -65,4 +99,4 @@ export const AppProvider = ({ children }) => {
   );
 };
 
-export default AppContext; // Export default context
+export default AppContext;

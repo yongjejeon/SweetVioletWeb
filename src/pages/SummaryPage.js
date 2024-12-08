@@ -12,42 +12,39 @@ const mapContainerStyle = {
 const center = { lat: 40.7128, lng: -74.006 }; // Default location (NYC)
 
 const SummaryPage = () => {
-  const { mealDetails } = useAppContext();
+  // Context and basic state hooks - always called first
+  const { 
+    mealDetails, 
+    googleMapsApiKey, 
+    isGoogleMapsKeyLoading 
+  } = useAppContext();
+  const navigate = useNavigate();
+
+  // All state hooks in a consistent order
   const [stores, setStores] = useState([]);
   const [selectedStore, setSelectedStore] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [ingredients, setIngredients] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [googleMapsApiKey, setGoogleMapsApiKey] = useState('');
+  const [isInitializing, setIsInitializing] = useState(true);
+  const [mapError, setMapError] = useState(null);
+  const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app'
+
+  // Refs
   const mapRef = useRef(null);
-  const navigate = useNavigate();
-  const API_URL = 'https://moodmeals-backend-1011833328775.us-central1.run.app';
-  
+
+  // Google Maps loader - always called before any conditional rendering
+  const { isLoaded, loadError } = useJsApiLoader({
+    googleMapsApiKey: googleMapsApiKey || undefined,
+    libraries,
+  });
+
+  // Initialization effect
   useEffect(() => {
-    const fetchGoogleMapsApiKey = async () => {
-      try {
-        const response = await fetch(`${API_URL}/api/google-maps-key`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch Google Maps API key');
-        }
-        const data = await response.json();
-        setGoogleMapsApiKey(data.apiKey);
-      } catch (error) {
-        console.error('Error fetching Google Maps API key:', error);
-      }
-    };
-
-    fetchGoogleMapsApiKey();
-  }, []);
-
-  const { isLoaded, loadError } = useJsApiLoader(
-    googleMapsApiKey
-      ? {
-          googleMapsApiKey,
-          libraries,
-        }
-      : undefined
-  );
+    if (!isGoogleMapsKeyLoading && googleMapsApiKey) {
+      setIsInitializing(false);
+    }
+  }, [isGoogleMapsKeyLoading, googleMapsApiKey]);
   
 
   // Handle map load
