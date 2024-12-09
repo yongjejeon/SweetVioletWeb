@@ -30,11 +30,11 @@ const DayCard = ({ day, meals }) => {
   };
 
   const mealCardStyle = {
-    backgroundColor: '#F9F9F9',
+    backgroundColor: '#FFF',
     padding: '15px', // Extra padding for breathing room
     borderRadius: '12px',
     marginBottom: '20px', // Space between meals
-    boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.05)', // Subtle shadow
+
   };
 
   const mealContainerStyle = {

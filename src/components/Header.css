@@ -5,34 +5,36 @@
     align-items: center;
     padding: 10px; /* Reduced padding */
     padding-top: 20px;
-    background-color: #9c8af0;
+    background-color: #f9f9f9;
     color: white;
   }
   
   .header-title {
     margin: 0;
-    font-size: 1.5em; /* Reduced font size */
-    color: white;
+    font-size: 2em; /* Reduced font size */
+    color: #574284;
+    margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 10px;
+    margin-left: 65px;
   }
   
   .nav-links {
     display: flex;
-    margin-right: 30px;
+    margin-top: 10px;
+    margin-right: 65px;
     margin-bottom: 10px;
   }
   
   .nav-link {
-    color: white;
+    color: #574284;
     text-decoration: none;
     margin-left: 30px; /* Reduced spacing between links */
-    font-size: 1em; /* Reduced font size for links */
+    font-size: 1.3em; /* Reduced font size for links */
   }
   
   .nav-link:hover {
     text-decoration: none;
-    color: #f0f0f0;
+    color: #43277e;
     transform: scale(1.1); /* Slightly increase the size on hover */
     transition: transform 0.2s ease, color 0.2s ease; /* Smooth animation */
 }

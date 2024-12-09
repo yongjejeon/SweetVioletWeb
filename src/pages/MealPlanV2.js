@@ -4,7 +4,12 @@ import { useAppContext } from '../AppContext';
 import DayCard from '../components/DayCardV2';
 import NutritionCard from '../components/NutritionCardV2';
 import ActionButtons from '../components/ActionButtons';
-import LoadingVideo from '../images/GeneratingMeal.mp4';
+import LoadingVideo from '../images/GeneratingMeal.mov';
+import RegenrateMeal from '../images/RegenerateMeal.png';
+import shoppingcart from '../images/shopping-cart.png';
+import mood from '../images/mood.png';
+import meal1 from '../images/meal4.png'; 
+
 import './MealPlan.css';
 
 const MealPlanV2 = () => {
@@ -118,6 +123,7 @@ const MealPlanV2 = () => {
 
 
   const fetchMealPlanTest = async (params = {}) => {
+    setLoading(true);
     const serializedPreferences = encodeURIComponent(JSON.stringify(packaged_preferences));
 
     const baseUrl = `${API_URL}/recipes/random/${serializedPreferences}/`;
@@ -157,6 +163,7 @@ const MealPlanV2 = () => {
   };
 
   const validate = async (data) => {
+
     const validatedMeals = {
       meals: [], // Will hold validated meal IDs
       scheduledDates: [], // Will hold the schedule with validated meal IDs
@@ -324,24 +331,26 @@ const MealPlanV2 = () => {
   
   const actionButtonsConfig = [
     {
-      label: 'Generate Shopping List',
+      label: 'Shopping List',
+      imageSrc: shoppingcart,
+      alt: 'Generate Shopping List',
       onClick: () => navigate('/summary'),
-      variant: 'primary',
-    },
-    
-    {
-      label: 'Regenerate Meal Plan',
-      onClick: () => {
-        fetchMealPlanTest();  
-      },
-      variant: 'primary',
     },
     {
-      label: 'How this helps your mood',
+      label: 'Regenerate Plan',
+      imageSrc: RegenrateMeal,
+      alt: 'Regenerate Meal Plan',
+      onClick: fetchMealPlanTest,
+    },
+    {
+      label: 'How this helps your Mood',
+      imageSrc: mood,
+      alt: 'How this helps your mood',
       onClick: fetchExplanation,
-      variant: 'primary',
-    }
+    },
   ];
+  
+  
   //loading animation
   if (loading) {
     return (
@@ -371,11 +380,20 @@ const MealPlanV2 = () => {
   }
 
   return (
-    <div style={{ padding: '20px'}}>
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px', fontSize:"22px" }}>
-        <h1 style = {{color: '#574284'}}>Generated Meal Plan for the Week</h1>
-      </div>
+    
+    <div style={{ padding: '20px', paddingBottom: '80px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center'}}>
+      <img 
+        src={meal1} 
+        alt="Meal Plan" 
+        style={{ width: '100%', height: 'auto', borderRadius: '10px' }} // Adjust styles as needed
+      />
+    </div>
 
+    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px', fontSize: "22px" }}>
+      <h1 style={{ color: '#574284' }}>Generated Meal Plan for the Week</h1>
+    </div>
+  
       <div style={{ display: 'flex', overflowX: 'scroll', marginBottom: '20px', padding: '10px' }}>
         {mealDetails?.map((dayData, index) => (
           <div key={index} style={{ cursor: 'pointer' }} onClick={() => handleDayClick(dayData.day)}>
@@ -383,61 +401,80 @@ const MealPlanV2 = () => {
           </div>
         ))}
       </div>
-
+  
       <div className="meal-plan-container">
         {nutrition.length > 0 && <NutritionCard nutritionData={nutrition} />}
       </div>
-      
-      <ActionButtons buttons={actionButtonsConfig} />
-
+      <div
+      style={{
+        flex: 1, // Allow this section to grow and fill available space
+        padding: '20px',
+        paddingBottom: '80px', // Ensure space for the footer
+      }}
+      ></div>
       {isModalOpen && (
-  <div
-    style={{
-      position: 'fixed',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      backgroundColor: 'white',
-      borderRadius: '8px',
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-      width: '80%',
-      maxWidth: '600px',
-      padding: '20px',
-      zIndex: 1000,
-    }}
-  >
-    <h2 style={{ textAlign: 'center', color: '#574284', marginBottom: '20px' }}>How This Helps Your Mood</h2>
-    <div
-      style={{
-        textAlign: 'center',
-        fontSize: '16px',
-        color: '#666',
-        lineHeight: '1.6',
-      }}
-      dangerouslySetInnerHTML={{ __html: explanation }}
-    ></div>
-    <button
-      onClick={closeModal}
-      style={{
-        display: 'block',
-        margin: '20px auto 0',
-        padding: '10px 20px',
-        backgroundColor: '#574284',
-        color: 'white',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        fontSize: '16px',
-        fontWeight: 'bold',
-      }}
-    >
-      Close
-    </button>
-  </div>
-)}
-
-
-
+        <div
+          style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: 'white',
+            borderRadius: '8px',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+            width: '80%',
+            maxWidth: '600px',
+            padding: '20px',
+            zIndex: 1000,
+          }}
+        >
+          <h2 style={{ textAlign: 'center', color: '#574284', marginBottom: '20px' }}>How This Helps Your Mood</h2>
+          <div
+            style={{
+              textAlign: 'center',
+              fontSize: '16px',
+              color: '#666',
+              lineHeight: '1.6',
+            }}
+            dangerouslySetInnerHTML={{ __html: explanation }}
+          ></div>
+          <button
+            onClick={closeModal}
+            style={{
+              display: 'block',
+              margin: '20px auto 0',
+              padding: '10px 20px',
+              backgroundColor: '#574284',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontSize: '16px',
+              fontWeight: 'bold',
+            }}
+          >
+            Close
+          </button>
+        </div>
+      )}
+  
+      <footer
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          backgroundColor: '#f9f9f9',
+          boxShadow: '0 -2px 5px rgba(0, 0, 0, 0.1)',
+          padding: '10px 0',
+          zIndex: 1000,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <ActionButtons buttons={actionButtonsConfig} />
+      </footer>
     </div>
   );
 };

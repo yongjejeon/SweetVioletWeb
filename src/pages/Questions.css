@@ -41,7 +41,7 @@ html, body {
 
 /* Card styling for questions */
 .card {
-  background-color: #9c8af0; /* Soft purple */
+  background-color: #836db2; /* Soft purple */
   border-radius: 12px; /* Ensure border radius is applied */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   padding: 20px;
