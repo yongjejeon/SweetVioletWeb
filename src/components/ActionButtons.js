@@ -2,66 +2,80 @@ import React from 'react';
 
 const ActionButtons = ({ buttons }) => {
   return (
-    <div
+    <footer
       style={{
+        position: 'fixed', // Stick the footer to the bottom of the screen
+        bottom: 0, // Align to the bottom
+        left: 0,
+        width: '100%', // Full-width footer
+        backgroundColor: '#f9f9f9', // Background color
+        boxShadow: '0 -2px 5px rgba(0, 0, 0, 0.1)', // Subtle shadow
+        padding: '10px 0', // Reduced padding for a thinner footer
+        zIndex: 1000, // Ensure it's above other elements
         display: 'flex',
-        justifyContent: 'center', // Center the buttons container
-        alignItems: 'center', // Vertically align items
-        gap: '400px', // Add spacing between buttons
-        width: '100%', // Full width container
-        maxWidth: '1200px', // Limit max width for better design
-        margin: '0 auto', // Center the container horizontally
-        padding: '0 20px', // Add padding near edges
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
-      {buttons.map((button, index) => (
-        <div
-          key={index}
-          onClick={button.onClick}
-          style={{
-            cursor: 'pointer',
-            textAlign: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            width: '120px', // Set fixed width for each button container
-            height: '150px', // Set fixed height for consistent sizing
-          }}
-        >
-          <img
-            src={button.imageSrc}
-            alt={button.alt || button.label}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '400px', // Adjust gap between buttons
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto',
+        }}
+      >
+        {buttons.map((button, index) => (
+          <div
+            key={index}
+            onClick={button.onClick}
             style={{
-              width: '80px', // Set consistent image width
-              height: '80px', // Set consistent image height
-              objectFit: 'cover',
-              borderRadius: '10px', // Optional: Rounded corners
-              transition: 'transform 0.3s ease', // Smooth transition for hover effect
+              cursor: 'pointer',
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              width: '100px', // Reduced button container size
+              height: '100px',
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.1)'; // Slightly enlarge image
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)'; // Reset image size
-            }}
-          />
-          {button.label && (
-            <span
+          >
+            <img
+              src={button.imageSrc}
+              alt={button.alt || button.label}
               style={{
-                marginTop: '10px',
-                fontSize: '14px',
-                fontWeight: 'bold',
-                color: '#574284',
-                textAlign: 'center', // Center text alignment
-                wordWrap: 'break-word', // Handle long text
+                width: '60px', // Smaller image size
+                height: '60px',
+                objectFit: 'cover',
+                borderRadius: '10px',
+                transition: 'transform 0.3s ease',
               }}
-            >
-              {button.label}
-            </span>
-          )}
-        </div>
-      ))}
-    </div>
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
+            />
+            {button.label && (
+              <span
+                style={{
+                  marginTop: '5px', // Reduced spacing
+                  fontSize: '12px', // Smaller font
+                  fontWeight: 'bold',
+                  color: '#574284',
+                  textAlign: 'center',
+                }}
+              >
+                {button.label}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+    </footer>
   );
 };
 
