@@ -28,6 +28,10 @@ export const AppProvider = ({ children }) => {
   const [googleMapsApiKey, setGoogleMapsApiKey] = useState('AIzaSyAE0FXObLgzofEz9rC3BorDKey3MW6wW9A');
   const [isGoogleMapsKeyLoading, setIsGoogleMapsKeyLoading] = useState(false);
 
+  // Add progress tracking for questions
+  const [currentQuestion, setCurrentQuestion] = useState(1); // Start at question 1
+  const totalQuestions = 10; // Total number of questions (hardcoded)
+
   return (
     <AppContext.Provider
       value={{
@@ -64,6 +68,10 @@ export const AppProvider = ({ children }) => {
         // Add Google Maps API key and loading state
         googleMapsApiKey,
         isGoogleMapsKeyLoading,
+        // Add question progress tracking
+        currentQuestion,
+        setCurrentQuestion,
+        totalQuestions,
       }}
     >
       {children}

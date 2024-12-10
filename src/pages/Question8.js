@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppContext from '../AppContext';
 import Button from '../components/Button';
 import Input from '../components/Input';
+import ProgressBar from '../components/ProgressBar'; 
 import './Questions.css'; // Import the shared CSS file
 
 const Question8 = () => {
@@ -12,10 +13,17 @@ const Question8 = () => {
     setMealData,
     setMealDetails,
     setLoading,
+    currentQuestion, 
+    setCurrentQuestion, 
+    totalQuestions,
     setNavigationFromQuestion8, // Access the setter for navigation flag
   } = useContext(AppContext);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setCurrentQuestion(10); 
+  }, [setCurrentQuestion]);
 
   const goToQuestion7 = () => {
     navigate('/Question7');
@@ -35,6 +43,7 @@ const Question8 = () => {
 
   return (
     <div className="page-wrapper"> {/* Wrap in page-wrapper for centering */}
+    <ProgressBar currentQuestion={currentQuestion} totalQuestions={totalQuestions} />
       <div className="container">
         <div className="card">
           <h2 className="card-title">{data[0].title}</h2>

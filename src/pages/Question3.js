@@ -1,13 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppContext from '../AppContext';
 import Selector from '../components/Selector';
 import Button from '../components/Button';
+import ProgressBar from '../components/ProgressBar'; // Import the ProgressBar component
 import './Questions.css'; // Import the shared CSS file
 
 const Question3 = () => {
-  const { activityLevel, setActivityLevel } = useContext(AppContext);
+  const { 
+    activityLevel, 
+    setActivityLevel, 
+    currentQuestion, 
+    setCurrentQuestion, 
+    totalQuestions 
+  } = useContext(AppContext);
+  
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    setCurrentQuestion(5); 
+  }, [setCurrentQuestion]);
 
   const goToQuestion4 = () => {
     navigate('/Question4');
@@ -25,6 +38,9 @@ const Question3 = () => {
 
   return (
     <div className="page-wrapper">
+      {/* Progress Bar */}
+      <ProgressBar currentQuestion={currentQuestion} totalQuestions={totalQuestions} />
+
       <div className="container">
         {/* Mimic the card for Selector */}
         <div className="card">

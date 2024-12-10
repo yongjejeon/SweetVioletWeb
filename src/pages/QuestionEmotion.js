@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppContext from '../AppContext';
 import Selector from '../components/Selector';
 import Button from '../components/Button';
+import ProgressBar from '../components/ProgressBar';
 import Happy from '../images/Happy.png';
 import Anxious from '../images/Anxious.png';
 import Tired from '../images/Tired.png';
@@ -18,18 +19,24 @@ const QuestionEmotion = () => {
     setSelectedEmotionGoal,
     selectedMood,
     setSelectedMood,
+    currentQuestion,
+    setCurrentQuestion,
+    totalQuestions,
   } = useContext(AppContext);
 
   const navigate = useNavigate();
 
   const [moodImage, setMoodImage] = useState(null);
 
+  useEffect(() => {
+    setCurrentQuestion(1); // Set the current question to 1 when this page loads
+  }, [setCurrentQuestion]);
+
   // Navigation logic
   const goToNext = () => {
     navigate('/Question0');
   };
 
-  // Emotion goal options
   const emotionGoals = [
     'Calm Down',
     'Feel Energized',
@@ -39,7 +46,6 @@ const QuestionEmotion = () => {
     'Recover',
   ];
 
-  // Dominant mood options
   const dominantMoods = [
     'Happy',
     'Stressed',
@@ -50,26 +56,26 @@ const QuestionEmotion = () => {
     'Neutral',
   ];
 
-  // Map moods to their images
   const moodImages = {
     Happy,
     Stressed,
     Relaxed,
     Motivated,
-    Happy, // If no specific image for "Motivated," fallback to Happy
     Tired,
     Anxious,
     Neutral,
   };
 
-  // Handle mood selection
   const handleMoodSelect = (mood) => {
     setSelectedMood(mood);
-    setMoodImage(moodImages[mood] || null); // Set the mood image if available
+    setMoodImage(moodImages[mood] || null);
   };
 
   return (
     <div className="page-wrapper">
+      {/* Progress Bar */}
+      <ProgressBar currentQuestion={currentQuestion} totalQuestions={totalQuestions} />
+
       <div className="content-wrapper">
         {/* Left Section: Questions */}
         <div className="questions-section">
@@ -99,7 +105,7 @@ const QuestionEmotion = () => {
               className="button"
               label="Next"
               onClick={goToNext}
-              disabled={!selectedEmotionGoal || !selectedMood} // Disable Next if inputs are incomplete
+              disabled={!selectedEmotionGoal || !selectedMood}
             />
           </div>
         </div>

@@ -1,13 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppContext from '../AppContext';
 import Selector from '../components/Selector';
 import Button from '../components/Button';
+import ProgressBar from '../components/ProgressBar'; // Import ProgressBar
 import './Questions.css';
 
 const Question0 = () => {
-  const { gender, setGender } = useContext(AppContext);
+  const {
+    gender,
+    setGender,
+    currentQuestion,
+    setCurrentQuestion,
+    totalQuestions,
+  } = useContext(AppContext);
   const navigate = useNavigate();
+
+  // Update the current question index when this page loads
+  useEffect(() => {
+    setCurrentQuestion(2); 
+  }, [setCurrentQuestion]);
 
   const goToQuestion1 = () => {
     navigate('/Question1');
@@ -24,7 +36,10 @@ const Question0 = () => {
   ];
 
   return (
-    <div className='page-wrapper'>
+    <div className="page-wrapper">
+      {/* Progress Bar */}
+      <ProgressBar currentQuestion={currentQuestion} totalQuestions={totalQuestions} />
+
       <div className="container">
         {/* Mimic the card for Selector */}
         <div className="card">
@@ -38,7 +53,7 @@ const Question0 = () => {
             />
           </div>
         </div>
-        
+
         <div style={buttonContainerStyle}>
           <Button
             className="button"
@@ -54,7 +69,6 @@ const Question0 = () => {
         </div>
       </div>
     </div>
-    
   );
 };
 
