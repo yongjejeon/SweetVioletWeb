@@ -27,7 +27,7 @@ const NutritionCard = ({ nutritionData }) => {
     width: '200px', // Keep the original width
     height: '120px', // Keep the original height
     padding: '10px',
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#fff',
     borderRadius: '8px',
     boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)', // Adjust box shadow to match the DayCard style
     fontFamily: 'Arial, sans-serif',

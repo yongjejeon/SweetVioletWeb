@@ -5,12 +5,13 @@ const ActionButtons = ({ buttons }) => {
     <div
       style={{
         display: 'flex',
-        justifyContent: 'space-between', // Dynamically space items
-        alignItems: 'center', // Vertically center items
-        width: '100%', // Ensure full-width container
-        maxWidth: '1200px', // Optional: Limit max width for better design
+        justifyContent: 'center', // Center the buttons container
+        alignItems: 'center', // Vertically align items
+        gap: '400px', // Add spacing between buttons
+        width: '100%', // Full width container
+        maxWidth: '1200px', // Limit max width for better design
         margin: '0 auto', // Center the container horizontally
-        padding: '0 20px', // Add padding for spacing near edges
+        padding: '0 20px', // Add padding near edges
       }}
     >
       {buttons.map((button, index) => (
@@ -23,17 +24,19 @@ const ActionButtons = ({ buttons }) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            width: '120px', // Set fixed width for each button container
+            height: '150px', // Set fixed height for consistent sizing
           }}
         >
           <img
             src={button.imageSrc}
             alt={button.alt || button.label}
             style={{
-              width: '100px', // Set image width
-              height: '100px', // Set image height
+              width: '80px', // Set consistent image width
+              height: '80px', // Set consistent image height
               objectFit: 'cover',
               borderRadius: '10px', // Optional: Rounded corners
-              transition: 'transform 0.3s ease', // Smooth transition
+              transition: 'transform 0.3s ease', // Smooth transition for hover effect
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.1)'; // Slightly enlarge image
@@ -49,6 +52,8 @@ const ActionButtons = ({ buttons }) => {
                 fontSize: '14px',
                 fontWeight: 'bold',
                 color: '#574284',
+                textAlign: 'center', // Center text alignment
+                wordWrap: 'break-word', // Handle long text
               }}
             >
               {button.label}
