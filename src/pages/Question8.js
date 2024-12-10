@@ -29,7 +29,7 @@ const Question8 = () => {
 
   const data = [
     {
-      title: 'Do You Have Any Other Goals You Want To Achieve?',
+      title: 'Do You Have Any Other Dietary Restrictions?',
     },
   ];
 
@@ -42,7 +42,7 @@ const Question8 = () => {
           <Input 
             value={Goals} 
             onChange={setGoals} 
-            placeholder="Enter your goals here..." 
+            placeholder="Enter here..." 
             type="text" // Set type to 'text' for goals
           />
         </div>
