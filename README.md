@@ -1,6 +1,6 @@
 # Sweet Violet Meal Planner
 
-Sweet Violet is a dynamic meal-planning application designed to help users achieve their dietary and emotional wellness goals. This frontend is built using **\*\*React.js\*\*** and integrates with a backend powered by FastAPI and Google Cloud. The application leverages modern libraries and APIs for interactive user experiences, including meal plan generation, ingredient tracking, and personalized nutritional insights.  
+Sweet Violet is a dynamic meal-planning application designed to help users achieve their dietary and emotional wellness goals. This frontend is built using **React.js** and integrates with a backend powered by FastAPI and Google Cloud. The application leverages modern libraries and APIs for interactive user experiences, including meal plan generation, ingredient tracking, and personalized nutritional insights.  
 
 - Link to Wireframe: https://www.figma.com/design/835kS7BAVDMVakyTN0xZQi/Sweet-Violet-Wireframe?node-id=0-1&m=dev&t=XVZpzYJRcE4v3Hvs-1
 - Link to Backend Repository: https://github.com/BrandonBell2025/SweetViolet
