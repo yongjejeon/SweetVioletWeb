@@ -181,11 +181,11 @@ The application includes the following key pages:
 
 ---
 ### Future Enhancements
-	•	Enhance accessibility to improve usability for users with different needs.
-	•	Collect analytics to refine features based on user preferences.
-	•	Expand filtering options for meal plans, including dietary restrictions and allergens, or preparation time.
-    •	User Authentication:Add login and profile features for personalized meal planning.
-	•	Social Sharing: Allow users to share their meal plans or shopping lists.
+- Enhance accessibility to improve usability for users with different needs.
+- Collect analytics to refine features based on user preferences.
+- Expand filtering options for meal plans, including dietary restrictions and allergens, or preparation time.
+- User Authentication:Add login and profile features for personalized meal planning.
+- Social Sharing: Allow users to share their meal plans or shopping lists.
 
 ### Contributors
 
