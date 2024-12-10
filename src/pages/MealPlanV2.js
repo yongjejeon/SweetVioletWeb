@@ -88,6 +88,7 @@ const MealPlanV2 = () => {
     try {
       setMealData(data);
       await fetchMealDetails(data.scheduledDates);
+      await fetchExplanation();
     } catch (error) {
       console.error('Error parsing sample data', error);
     } finally {
@@ -293,7 +294,7 @@ const MealPlanV2 = () => {
   
   const fetchExplanation = async () => {
     setIsFetchingExplanation(true);
-    setIsModalOpen(true);
+    //setIsModalOpen(true);
     try {
       const response = await fetch(`${API_URL}/openai/explanations`, {
         method: 'POST',
@@ -325,7 +326,6 @@ const MealPlanV2 = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setExplanation('');
   };
   
   
@@ -346,7 +346,7 @@ const MealPlanV2 = () => {
       label: 'How this helps your Mood',
       imageSrc: mood,
       alt: 'How this helps your mood',
-      onClick: fetchExplanation,
+      onClick: () => setIsModalOpen(true),
     },
   ];
   
