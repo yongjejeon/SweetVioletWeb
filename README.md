@@ -23,6 +23,28 @@ The application includes the following key pages:
 - **Meal Plan Page**: Displays a weekly scrollable meal plan with a breakdown of daily meals, total cost estimates, and average nutrition values.
 - **Detailed Meal Plan Page**: Provides additional details on daily meals and individual nutritional information.
 
+## Features
+
+### Key Functionalities
+1. **Meal Plan Generation**
+   - Dynamically generate weekly meal plans based on user preferences.
+   - Fetch recipes from the backend and display detailed nutritional breakdowns.
+
+2. **Mood-Based Insights**
+   - Provide explanations for how the meal plan aligns with the user’s emotional and dietary goals.
+
+3. **Ingredient Summary**
+   - List all ingredients for selected meal plans.
+   - Allow users to interact with the list (e.g., checking/unchecking items).
+
+4. **Google Maps Integration**
+   - Display nearby Trader Joe's stores.
+   - Allow users to select a preferred store and link it to their shopping list.
+
+5. **Responsive Design**
+   - Optimized for both desktop and mobile users.
+---
+
 ## Component Documentation
 
 ### App.js
@@ -116,13 +138,32 @@ The application includes the following key pages:
   - `handlePreviousDay()`: Proceeds to the next meal.
   - `handleNextDay()`: Proceeds to the previous meal.
 
+### Summary Page
+- **Purpose**: Provides a summary of the user’s meal plan and integrates with Google Maps to display nearby Trader Joe's stores.
+- **Features**:
+  - Displays a Google Map with pins for Trader Joe's locations.
+  - Allows users to select a store, view its details, and include it in their shopping list.
+  - Shows the ingredient list with an option to toggle items and recalculate the total price.
+  - Buttons to print the shopping list or send it to the user’s phone.
+- **Key Components Used**:
+  - Google Maps API integration.
+  - Dynamic list rendering for ingredients.
+
+---
+
 ## Setup Instructions
 1. **Clone the Repository**: 
    - git clone https://github.com/yongjejeon/SweetVioletWeb.git
 2. **Install Dependencies**: Run `npm install` to install required packages.
-3. **Run Backend**: ensure that your backend server is running to dynamically load content on the meal plan page
-3. **Start the React Development Server**: Use `npm start` to start the application.
-4. **View Application**: Open `http://localhost:3000` in a browser to access the frontend.
+3. **Add environment variables**:
+  - Create a .env file in the project root.
+  - Add your API URLs and keys:
+      ```bash
+      REACT_APP_API_URL=<backend_api_url>
+      REACT_APP_GOOGLE_MAPS_API_KEY=<google_maps_api_key>
+4. **Run Backend**: ensure that your backend server is running to dynamically load content on the meal plan page
+5. **Start the React Development Server**: Use `npm start` to start the application.
+6. **View Application**: Open `http://localhost:3000` in a browser to access the frontend.
 
 ## Development Process
 
@@ -137,3 +178,15 @@ The application includes the following key pages:
 ## AI Usage
 - **AI Assistance**: AI was used to generate initial code templates for component structure and mock data, provide guidance on best practices for component reusability, and suggest improvements for code organization.
 - **Justification**: Using AI accelerated development by generating base code, allowing for faster iterations and testing of features like average nutrient calculations and component layout.
+
+---
+### Future Enhancements
+	•	Enhance accessibility to improve usability for users with different needs.
+	•	Collect analytics to refine features based on user preferences.
+	•	Expand filtering options for meal plans, including dietary restrictions and allergens, or preparation time.
+    •	User Authentication:Add login and profile features for personalized meal planning.
+	•	Social Sharing: Allow users to share their meal plans or shopping lists.
+
+### Contributors
+
+Howard Zhu, Allen Feng, Brandon Bell, Yongje.
