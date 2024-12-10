@@ -425,7 +425,7 @@ const MealPlanV2 = () => {
             width: '80%',
             maxWidth: '600px',
             padding: '20px',
-            zIndex: 1000,
+            zIndex: 1100,
           }}
         >
           <h2 style={{ textAlign: 'center', color: '#574284', marginBottom: '20px' }}>How This Helps Your Mood</h2>

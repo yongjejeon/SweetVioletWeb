@@ -23,14 +23,31 @@ import HowToCook from './pages/HowToCook';
 import SummaryPage from './pages/SummaryPage'; 
 import PrintPage from './pages/PrintPage'; 
 
-
 const AppContent = () => {
   const location = useLocation();
 
+  // Define the paths where SignInHeader should be displayed
+  const noNavLinksPaths = [
+    '/', 
+    '/welcomescreen', 
+    '/QuestionEmotion', 
+    '/Question0', 
+    '/Question1', 
+    '/Question2', 
+    '/Question3', 
+    '/Question4', 
+    '/Question5', 
+    '/Question6', 
+    '/Question7', 
+    '/Question8',
+  ];
+
+  // Determine which header to render based on the current path
+  const renderHeader = noNavLinksPaths.includes(location.pathname);
+
   return (
     <>
-      {/* Conditionally render headers based on the route */}
-      {location.pathname === '/' ? (
+      {renderHeader ? (
         <SignInHeader title="Mood Meals" />
       ) : (
         <Header
@@ -46,15 +63,15 @@ const AppContent = () => {
         <Route path="/preferences" element={<Preferences />} />
         <Route path="/welcomescreen" element={<WelcomeScreen />} />
         <Route path="/QuestionEmotion" element={<QuestionEmotion />} />
-        <Route path="/Question0" element={<Question0/>} />
-        <Route path="/Question1" element={<Question1/>} />
-        <Route path="/Question2" element={<Question2/>} />
-        <Route path="/Question3" element={<Question3/>} />
-        <Route path="/Question4" element={<Question4/>} />
-        <Route path="/Question5" element={<Question5/>} />
-        <Route path="/Question6" element={<Question6/>} />
-        <Route path="/Question7" element={<Question7/>} />
-        <Route path="/Question8" element={<Question8/>} />
+        <Route path="/Question0" element={<Question0 />} />
+        <Route path="/Question1" element={<Question1 />} />
+        <Route path="/Question2" element={<Question2 />} />
+        <Route path="/Question3" element={<Question3 />} />
+        <Route path="/Question4" element={<Question4 />} />
+        <Route path="/Question5" element={<Question5 />} />
+        <Route path="/Question6" element={<Question6 />} />
+        <Route path="/Question7" element={<Question7 />} />
+        <Route path="/Question8" element={<Question8 />} />
         <Route path="/meal-plan-v2" element={<MealPlanV2 />} />
         <Route path="/meal-plan/:day" element={<MealPlanDetailV2 />} /> {/* Updated route */}
         <Route path="/how-to-cook" element={<HowToCook />} />
