@@ -45,6 +45,16 @@ const MealPlanDetailV2 = () => {
               <h2 className="meal-header">{mealData.type.charAt(0).toUpperCase() + mealData.type.slice(1)}</h2>
               <p className="meal-title">{mealData.Recipe_Name}</p>
 
+              {/* Add Cuisine Type and Diet Labels */}
+              <div className="meal-details">
+                <p className="meal-detail">
+                  <strong>Cuisine Type:</strong> {mealData.cuisine_type || 'Not Available'}
+                </p>
+                <p className="meal-detail">
+                  <strong>Diet Labels:</strong> {mealData.diet_labels?.join(', ') || 'Not Available'}
+                </p>
+              </div>
+
               <div className="tabs">
                 <button
                   className={`tab-button ${activeTab === 'nutrition' ? 'active' : ''}`}
@@ -89,30 +99,24 @@ const MealPlanDetailV2 = () => {
                       <span className="nutrition-value">{Math.round(mealData.nutrients.FIBTG)}g</span>
                     </div>
                     <div className="divider"></div>
-                    {/* Add other nutrition items in a similar way */}
                   </div>
                 ) : (
                   <div className="ingredients">
-                  <h3>Ingredients</h3>
-                  {mealData.ingredients.map((ingredient, idx) => {
-                    // Check if quantity is "0" or other values that should not be displayed as 0
-                    const quantityDisplay = ingredient.quantity === "0" ? "To Taste" : parseFloat(ingredient.quantity).toFixed(1);
+                    <h3>Ingredients</h3>
+                    {mealData.ingredients.map((ingredient, idx) => {
+                      const quantityDisplay = ingredient.quantity === "0" ? "To Taste" : parseFloat(ingredient.quantity).toFixed(1);
+                      const unitDisplay = ingredient.unit === "<unit>" ? "" : ingredient.unit;
 
-                    // Omit the unit if it's "<unit>"
-                    const unitDisplay = ingredient.unit === "<unit>" ? "" : ingredient.unit;
-
-                    return (
-                      <div key={idx} className="ingredient-item">
-                        <span className="ingredient-name">{ingredient.name}</span>
-                        <span className="ingredient-quantity">
-                          {quantityDisplay} {unitDisplay}
-                        </span>
-                      </div>
-                    );
-                  })}
-
-                </div>
-
+                      return (
+                        <div key={idx} className="ingredient-item">
+                          <span className="ingredient-name">{ingredient.name}</span>
+                          <span className="ingredient-quantity">
+                            {quantityDisplay} {unitDisplay}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 )}
               </div>
             </div>
