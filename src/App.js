@@ -8,7 +8,6 @@ import WelcomeScreen from './pages/WelcomScreen';
 import MealPlanDetailV2 from './pages/MealPlanDetailV2'; // Import the new MealPlanDetailV2
 import MealPlanV2 from './pages/MealPlanV2';
 import QuestionEmotion from './pages/QuestionEmotion';
-import Question0 from './pages/Question0';
 import Question1 from './pages/Question1';
 import Question2 from './pages/Question2';
 import Question3 from './pages/Question3';
@@ -17,6 +16,7 @@ import Question5 from './pages/Question5';
 import Question6 from './pages/Question6';
 import Question7 from './pages/Question7';
 import Question8 from './pages/Question8';
+import Question9 from './pages/Question9';
 import SignIn from './pages/SignIn';
 import { AppProvider } from './AppContext';
 import HowToCook from './pages/HowToCook';
@@ -63,7 +63,6 @@ const AppContent = () => {
         <Route path="/preferences" element={<Preferences />} />
         <Route path="/welcomescreen" element={<WelcomeScreen />} />
         <Route path="/QuestionEmotion" element={<QuestionEmotion />} />
-        <Route path="/Question0" element={<Question0 />} />
         <Route path="/Question1" element={<Question1 />} />
         <Route path="/Question2" element={<Question2 />} />
         <Route path="/Question3" element={<Question3 />} />
@@ -72,6 +71,7 @@ const AppContent = () => {
         <Route path="/Question6" element={<Question6 />} />
         <Route path="/Question7" element={<Question7 />} />
         <Route path="/Question8" element={<Question8 />} />
+        <Route path="/Question9" element={<Question9 />} />
         <Route path="/meal-plan-v2" element={<MealPlanV2 />} />
         <Route path="/meal-plan/:day" element={<MealPlanDetailV2 />} /> {/* Updated route */}
         <Route path="/how-to-cook" element={<HowToCook />} />
