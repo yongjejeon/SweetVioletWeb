@@ -145,6 +145,7 @@ const MealPlanV2 = () => {
       }
   
       const mealPlan = await response.json();
+      console.log(mealPlan)
       console.log("MealPlan keys:", Object.keys(mealPlan));
       console.log("MealPlan keys:", mealPlan[0]);
 
@@ -152,11 +153,8 @@ const MealPlanV2 = () => {
       console.log("this should work", test)
       console.log('Fetched meal plan:', mealPlan);
 
-      if (test) {
-        validate(mealPlan);  // Only call validate if scheduledDates exists
-      } else {
-        console.error('Scheduled dates not found in fetched meal plan');
-      }
+      validate(mealPlan);  // Only call validate if scheduledDates exists
+
     } catch (error) {
       console.error("Failed to fetch meal plan:", error);
       throw error;
@@ -195,7 +193,7 @@ const MealPlanV2 = () => {
         } catch (error) {
           console.error(`Day ${day} - Error fetching specific breakfast meal:`, error);
           try {
-            const allBreakfastsData = await fetch(`${API_URL}/recipes/filter/?meal_type=breakfast`);
+            const allBreakfastsData = await fetch(`${API_URL}/recipes/filter/?health_label=Vegan`);
             if (!allBreakfastsData.ok) {
               throw new Error(`Failed to fetch all breakfast meals for day ${day}`);
             }
@@ -225,7 +223,7 @@ const MealPlanV2 = () => {
         } catch (error) {
           console.error(`Day ${day} - Error fetching specific lunch meal:`, error);
           try {
-            const allLunchesData = await fetch(`${API_URL}/recipes/filter/?meal_type=lunch/dinner`);
+            const allLunchesData = await fetch(`${API_URL}/recipes/filter/?health_label=Vegan`);
             if (!allLunchesData.ok) {
               throw new Error(`Failed to fetch all lunch meals for day ${day}`);
             }
@@ -255,7 +253,7 @@ const MealPlanV2 = () => {
         } catch (error) {
           console.error(`Day ${day} - Error fetching specific dinner meal:`, error);
           try {
-            const allDinnersData = await fetch(`${API_URL}/recipes/filter/?meal_type=lunch/dinner`);
+            const allDinnersData = await fetch(`${API_URL}/recipes/filter/?health_label=Vegan`);
             if (!allDinnersData.ok) {
               throw new Error(`Failed to fetch all dinner meals for day ${day}`);
             }
