@@ -11,7 +11,7 @@ const Question5 = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setCurrentQuestion(7); 
+    setCurrentQuestion(5); 
   }, [setCurrentQuestion]);
 
   const goToQuestion6 = () => {
