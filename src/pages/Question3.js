@@ -19,7 +19,7 @@ const Question3 = () => {
 
 
   useEffect(() => {
-    setCurrentQuestion(5); 
+    setCurrentQuestion(3); 
   }, [setCurrentQuestion]);
 
   const goToQuestion4 = () => {
