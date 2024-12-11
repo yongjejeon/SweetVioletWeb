@@ -34,7 +34,7 @@ const QuestionEmotion = () => {
 
   // Navigation logic
   const goToNext = () => {
-    navigate('/Question0');
+    navigate('/Question2');
   };
 
   const emotionGoals = [
