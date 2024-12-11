@@ -19,15 +19,15 @@ const Question2 = () => {
 
 
   useEffect(() => {
-    setCurrentQuestion(4); 
+    setCurrentQuestion(2); 
   }, [setCurrentQuestion]);
 
   const goToQuestion3 = () => {
     navigate('/Question3');
   };
 
-  const goToQuestion1 = () => {
-    navigate('/Question1');
+  const goToQuestionEmotion = () => {
+    navigate('/QuestionEmotion');
   };
 
   const data = [
@@ -57,7 +57,7 @@ const Question2 = () => {
 
         {/* Button container to display Prev and Next buttons horizontally */}
         <div className="button-container">
-          <Button className="button" label="Prev" onClick={goToQuestion1} />
+          <Button className="button" label="Prev" onClick={goToQuestionEmotion} />
           <Button
             className="button"
             label="Next"
