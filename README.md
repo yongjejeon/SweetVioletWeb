@@ -1,6 +1,6 @@
-# Sweet Violet Meal Planner
+# Mood Meals
 
-Sweet Violet is a dynamic meal-planning application designed to help users achieve their dietary and emotional wellness goals. This frontend is built using **React.js** and integrates with a backend powered by FastAPI and Google Cloud. The application leverages modern libraries and APIs for interactive user experiences, including meal plan generation, ingredient tracking, and personalized nutritional insights.  
+Mood Meals is a dynamic meal-planning application designed to help users achieve their dietary and emotional wellness goals. This frontend is built using **React.js** and integrates with a backend powered by FastAPI and Google Cloud. The application leverages modern libraries and APIs for interactive user experiences, including meal plan generation, ingredient tracking, and personalized nutritional insights.  
 
 - Link to Wireframe: https://www.figma.com/design/835kS7BAVDMVakyTN0xZQi/Sweet-Violet-Wireframe?node-id=0-1&m=dev&t=XVZpzYJRcE4v3Hvs-1
 - Link to Backend Repository: https://github.com/BrandonBell2025/SweetViolet
@@ -18,7 +18,7 @@ Sweet Violet is a dynamic meal-planning application designed to help users achie
 
 ## Project Description
 
-The Sweet Violet Meal Planner enables users to personalize meal plans based on their preferences. After setting preferences like meal types, dietary restrictions, and health goals, users generate a weekly meal plan that displays the average nutritional values (e.g., calories, carbs, protein, fat) and includes an option to view more detailed nutritional information.
+The Mood Meals Meal Planner enables users to personalize meal plans based on their preferences. After setting preferences like meal types, dietary restrictions, and health goals, users generate a weekly meal plan that displays the average nutritional values (e.g., calories, carbs, protein, fat) and includes an option to view more detailed nutritional information.
 
 The application includes the following key pages:
 - **Preferences Page**: Collects user preferences for meal types, dietary restrictions, health goals, and personal details like weight and height.
