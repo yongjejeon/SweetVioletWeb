@@ -12,7 +12,7 @@ const Question6 = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setCurrentQuestion(8); 
+    setCurrentQuestion(6); 
   }, [setCurrentQuestion]);
 
   const goToQuestion5 = () => {
